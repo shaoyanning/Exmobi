@@ -1,0 +1,53 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			   function doDelete(id) {
+
+                var sliplist = document.getElementById(id);
+
+                sliplist.remove();
+
+            }
+
+		]]>
+		</script>
+	</head>
+	<body>
+		<toggle bindid="id1111" groupid="tg" caption="折叠1" showtype="multiple" icon="" style="" ></toggle>
+		<div id="id1111" style="height:60;text-valign: middle;background-color: green;">
+			估计该回家开个会尽快回家
+		</div>
+		<toggle bindid="id111" groupid="tg" caption="折叠1" icon="" showtype="multiple"  style="" ></toggle>
+		<div id="id111" style="height:60;text-valign: middle;background-color: blue;">
+			估计该回家开个会尽快回家
+		</div>
+		<toggle bindid="id11" groupid="tg" caption="折叠1" icon="" showtype="multiple" selected="true"  style="" ></toggle>
+		<div id="id11" style="height:60;text-valign: middle;background-color: red;">
+			估计该回家开个会尽快回家
+		</div>
+		<toggle bindid="id12" groupid="tg" caption="sliplistitem" icon="" showtype="multiple" selected="true"  style="" ></toggle>
+		<div id="id112" >
+			 <sliplistitem type="oneline" icon="directurl:http://bbs.exmobi.cn/uc_server/images/noavatar_small.gif" style="iconwidth:50;iconround:true;iconwidth:40;" caption="ExMobi[客户端]历史版本发布更新" ricon="directurl:http://bbs.exmobi.cn/template/qu_yuncolor/tt_img/image_s.gif" cached="true" rcaption="272" rslip1text="删除" rslip1href="doDelete('list0')" id="list0"/>
+
+            <sliplistitem type="oneline" icon="directurl:http://ask.android-studio.org/uploads/avatar/000/00/13/21_avatar_max.jpg" style="iconwidth:50;iconround:true;iconwidth:40;" caption="MBuilder[IDE]历史版本发布更新" ricon="directurl:http://bbs.exmobi.cn/template/qu_yuncolor/tt_img/image_s.gif" cached="true" rcaption="177" rslip1text="删除" rslip1href="doDelete('list1')" id="list1"/>
+
+            <sliplistitem type="oneline" icon="directurl:http://ask.android-studio.org/uploads/avatar/000/00/14/66_avatar_max.jpg" style="iconwidth:50;iconround:true;iconwidth:40;" caption="第三方程序调用ExMobi客户端传参方式变更说明" ricon="directurl:http://bbs.exmobi.cn/template/qu_yuncolor/tt_img/image_s.gif" cached="true" rcaption="308" rslip1text="删除" rslip1href="doDelete('list2')" id="list2"/>
+
+            <sliplistitem type="oneline" icon="directurl:http://ask.android-studio.org/uploads/avatar/000/00/02/16_avatar_max.jpg" style="iconwidth:50;iconround:true;iconwidth:40;" caption="ExMobi[服务端]历史版本发布更新" ricon="directurl:http://bbs.exmobi.cn/template/qu_yuncolor/tt_img/image_s.gif" cached="true" rcaption="243" rslip1text="删除" rslip1href="doDelete('list3')" id="list3"/>
+
+            <sliplistitem type="oneline" icon="directurl:http://bbs.exmobi.cn/uc_server/images/noavatar_small.gif" style="iconwidth:50;iconround:true;iconwidth:40;" caption="免费版exmobi应用，利用百度云推送实现推送功能" ricon="directurl:http://bbs.exmobi.cn/template/qu_yuncolor/tt_img/image_s.gif" cached="true" rcaption="2733" rslip1text="删除" rslip1href="doDelete('list4')" id="list4"/>
+
+            <sliplistitem type="oneline" icon="res:image/201601221437.jpg" style="iconwidth:50;iconround:true;iconwidth:40;" caption="ExMobi[客户端]历史版本发布更新" ricon="directurl:http://bbs.exmobi.cn/template/qu_yuncolor/tt_img/image_s.gif" cached="true" rcaption="272" rslip1text="删除" rslip1href="doDelete('list5')" id="list5"/>
+
+            <sliplistitem type="oneline" icon="res:image/85_avatar_mid.jpg" style="iconwidth:50;iconround:true;iconwidth:40;" caption="ExMobi开发中如何调试js " ricon="directurl:http://bbs.exmobi.cn/template/qu_yuncolor/tt_img/image_s.gif" cached="true" rcaption="198" rslip1text="删除" rslip1href="doDelete('list6')" id="list6"/>
+
+            <sliplistitem type="oneline" icon="res:image/201601221436.jpg" style="iconwidth:50;iconround:true;iconwidth:40;" caption="pop弹窗页面如何实现边框圆角" ricon="directurl:http://bbs.exmobi.cn/template/qu_yuncolor/tt_img/image_s.gif" cached="true" rcaption="1792" rslip1text="删除" rslip1href="doDelete('list7')" id="list7"/>
+
+
+		</div>
+	</body>
+</html>

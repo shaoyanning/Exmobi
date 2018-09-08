@@ -1,0 +1,89 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+	<!-- 	<title>Hello World</title> -->
+		<script>
+		<![CDATA[
+			function show(){
+				alert("d");
+			}
+			function reSearch(){
+
+    var dialogObj = document.getElementById("dialogid");
+
+    dialogObj.show();
+
+}
+
+		]]>
+		</script>
+	</head>
+	<header style="align:center;height: 80;background-color: gray;" class="" id="">
+	   <a href="res:page/login/layout.uixml" target="_blank" style="color:blue;align: center;" urltype="">返回</a>
+	   <a href="res:page/htmlgroup/htmlgroup.uixml" target="_blank" style="color:blue;align: center;" urltype="">返回</a>
+		<titlebar title="hello" style="" caption="" iconhref="window.close()" rcaption="查询" riconhref="script:popmenu(cm1)"/>
+	</header>	
+	<hr color="red" gradually="true"></hr>
+	<body>
+		<font style="font-size: 40;color:red;align:center">你好，坎坎坷坷</font><br></br>
+		    <artfont style="fill:url(res:image/23.jpg);align:center;font-size:2.5em;">钥匙</artfont><br/>
+
+    <efont>
+
+        <tab/>一把坚实的大锁挂在大门上，一根<subfont style="color:red;font-size:22">铁杆</subfont>费了九牛二虎之力，还是无法将它撬开。<br/>
+
+        <tab/><subfont style="color:blue;font-size:22">钥匙</subfont>来了，他瘦小的身子钻进锁孔，只轻轻一转，大锁就“啪”地一声打开了。<br/>
+
+        <tab/><subfont style="color:red;font-size:22">铁杆</subfont>奇怪地问：“为什麽我费了那麽大力气也打不开，而你却轻而易举地就把它打开了呢？”<br/>
+
+        <tab/><subfont style="color:blue;font-size:22">钥匙</subfont>说：“因为我最了解他的心。”
+
+    </efont>
+	<div style="width: 50;height:50;border-radius: 25;background-color: red;text-align: center;text-valign: center;">
+		<font>圆</font>
+	</div>
+	<a href="res:page/scroll.uixml" target="_blank" style="color:blue;align: center;" urltype="">返回11</a>
+	<listitem type="oneline" icon="" caption="点我" rcaption="" href="res:page/scrollpicture.uixml"></listitem>
+	<listitem type="oneline" icon="" caption="点我" rcaption="" href="res:page/slider.uixml"></listitem>
+	<listitem type="oneline" icon="" caption="点我" rcaption="" href="res:page/tree.uixml"></listitem>
+	<listitem type="oneline" icon="" caption="contextmenu" rcaption="" href="script:popmenu(cm1)"></listitem>
+	<listitem type="oneline" icon="" caption="indexbar" rcaption="" href="res:page/indexbar.uixml"></listitem>
+	<listitem type="twoline" icon="" caption="toggle" rcaption="" sndcaption="" href="res:page/toggle.uixml"></listitem>
+	<listitem type="oneline" icon="" caption="indexbar" rcaption="" href="res:page/form.uixml"></listitem>
+	<listitem type="oneline" icon="" caption="theme" rcaption="" href="res:page/exmobi/reg/reg1.uixml"></listitem>
+	<contextmenu id="cm1" layout="vertical" showtype="normal" optiontype="mix" title="弹出菜单" shownumber="4">
+		<option caption="详情" onclick="alert('details')"></option>
+		<option caption="删除" onclick="alert('delete')"></option>
+	</contextmenu>
+	
+	</body>
+	<leftcontainer style="width:50;height:40;background-color: blue" landstyle="" id="leftcontainer">
+		<font style="font-size: 40;color: white;align:center">d</font>
+	</leftcontainer>
+	<rightcontainer style="width:50;height:40;background-color: yellow" landstyle="" id="rightcontainer">
+		<font style="font-size: 40;color: white;align:center">d</font>
+	</rightcontainer>
+	<fixset>
+		<fix id="fu" style="right:40;bottom:40;">
+			<input type="button" value="button" onclick="show()"></input>
+
+		</fix>
+	</fixset>
+	<dialogset>
+
+<dialog id="dialogid" icon="res:img/dialogicon.png" title="标题" oktext="确定" canceltext="取消">
+
+<input id="dialogtext" type="text" prompt="输入查询条件"/>
+
+</dialog>
+
+</dialogset>
+
+	
+	<!--<footer style="background-color: yellow" class="" id="footer">
+		<font style="color: green;align:center;font-size: 40;">这里是底部</font>		
+	</footer>-->
+
+
+</html>

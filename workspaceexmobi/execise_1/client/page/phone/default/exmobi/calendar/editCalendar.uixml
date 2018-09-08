@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html id="editCalendar">
+<head>
+	<title show="false" />
+	<link rel="stylesheet" type="text/css" href="res:css/global.css" />
+	<script type="text/javascript" src="res:script/exmobijs/base.js" />
+	<script type="text/javascript" src="res:script/exmobijs/app.js" />
+	<style>
+		.label_left2{padding:5 0;}
+	</style>
+	<script>
+		<![CDATA[
+			var db = new DB();
+			var reg = /^(\d{4})\/(\d{2})\/(\d{2}) (\d{2}):(\d{2}):(\d{2})$/;
+			var timeStr="";
+			function init(){
+				timeStr = window.getParameter("timeStr");
+				var params = EncryptionUtil.base64Decode(window.getParameter("params"));
+				var pam = params.split("&");
+				for(var i=0;i<pam.length;i++){
+					var idStr = pam[i].split("=")[0];
+					var valStr = pam[i].split("=")[1];
+					if(idStr =="StartDate" || idStr =="EndDate"){
+						var year = valStr.replace(reg,"$1");
+						var month = valStr.replace(reg,"$2");
+						var day = valStr.replace(reg,"$3");
+						var hour = valStr.replace(reg,"$4");
+						var minitus = valStr.replace(reg,"$5");
+						if(month< 10 && month.length==1){
+							month = "0"+""+month;
+						}
+						if(day< 10 && day.length==1){
+							day = "0"+""+day;
+						}
+						if(hour< 10 && hour.length==1){
+							hour = "0"+""+hour;
+						}
+						if(minitus< 10 && minitus.length==1){
+							minitus = "0"+""+minitus;
+						}
+						$(idStr+"_date").value = year+"-"+month+"-"+day;
+						$(idStr+"_time").value = hour+":"+minitus;
+					}else{
+						$(idStr).value = valStr;
+					}
+				}
+			}
+						
+			function savesubmit(){
+				var subject = $("subject").value;
+				var Location = $("Location").value;
+				
+				var StartDate_date = $("StartDate_date").value;
+				var StartDate_time = $("StartDate_time").value;
+				
+				var EndDate_date = $("EndDate_date").value;
+				var EndDate_time = $("EndDate_time").value;
+				
+				var LeaderName = $("LeaderName").value;
+				var MovementContent = $("MovementContent").value;
+				
+				var regStr = /\r\n/g;
+				var regStr2 = /\r/g;
+				MovementContent = MovementContent.replace(regStr,"<br/>").replace(regStr2,"<br/>");
+				if(subject==""){
+					alert("请输入主题");
+					return false;
+				}else if(Location==""){
+					alert("请选择会议地点");
+					return false;
+				}else if(StartDate_date==""){
+					alert("请选择会议开始日期");
+					return false;
+				}else if(StartDate_time==""){
+					alert("请选择会议开始时间");
+					return false;
+				}else if(EndDate_date==""){
+					alert("请选择会议结束日期");
+					return false;
+				}else if(EndDate_time==""){
+					alert("请选择会议结束时间");
+					return false;
+				}else if(LeaderName==""){
+					alert("请选择主讲人员");
+					return false;
+				}
+				
+				var reg = /-|:/g;
+				var start = StartDate_date.replace(reg,"")+""+StartDate_time.replace(reg,"");
+				var end = EndDate_date.replace(reg,"")+""+EndDate_time.replace(reg,"");
+				if(Number(start) > Number(end)){
+					alert("开始时间不能大于结束时间！");
+					return false;
+				}
+				start = StartDate_date.replace(reg,"/")+" "+StartDate_time+":00";
+				end = EndDate_date.replace(reg,"/")+" "+EndDate_time+":00";
+				
+				var cid =  $("Cid").value;
+				//操作数据库
+				var flag = db.isOpen();
+			    var result = true;
+			    if(!flag){
+			       result=db.open("DB.db","sys:db/")/*打开DB.db数据库，如果不存在则在目录db下创建*/
+			    }
+			    if(result){
+			    	if(!db.isTableExist("calendar")){
+						var sql = "create table calendar(Cid varchar,subject varchar,Location varchar,StartDate varchar,EndDate varchar,LeaderName varchar,MovementContent varchar,txt1 varchar,txt2 varchar);";
+				        var array = new Array();
+				        array.push("Cid nvarchar(64)","subject nvarchar(256)","Location nvarchar(256)","StartDate nvarchar(256)","EndDate nvarchar(256)","LeaderName nvarchar(256)","MovementContent nvarchar(256)","txt1 nvarchar(256)","txt2 nvarchar(256)");
+				        var resultCreate = db.createTable("calendar",array); /*创建表 */
+				        if(!resultCreate){
+				           alert("数据表创建失败！");
+				       }else{
+				       		var inSql = "insert into calendar values('"+cid+"','"+subject+"','"+Location+"','"+start+"','"+end+"','"+LeaderName+"','"+MovementContent+"','','')";
+				       		var flag = db.execute(inSql);
+						    if(flag){
+						        alert("保存成功");
+						        db.close();
+							    //PageUtil.getWindowById("calendar_index").callFunction("getdate('"+timeStr+"')");
+							    window.close();
+						    }else{
+						       alert("保存失败")
+						    } 
+				       }
+					}else{
+							var selectSql = "select * from calendar where Cid='"+cid+"'";
+							var dataObj = db.query(selectSql);
+							if(dataObj !=undefined && dataObj !=null && dataObj !=""){
+								var updateSql = "update calendar set subject='"+subject+"', Location='"+Location+"', StartDate='"+start+"', EndDate='"+end+"',LeaderName='"+LeaderName+"',MovementContent='"+MovementContent+"' where Cid='"+cid+"'";
+								var flag = db.execute(updateSql);
+							    if(flag){
+							        alert("更新成功");
+							        db.close();
+								    //PageUtil.getWindowById("calendar_index").callFunction("getdate('"+timeStr+"')");
+								    window.close();
+							    }else{
+							       alert("更新失败")
+							    }
+							}else{
+								var inSql = "insert into calendar values('"+cid+"','"+subject+"','"+Location+"','"+start+"','"+end+"','"+LeaderName+"','"+MovementContent+"','','')";
+					       		var flag = db.execute(inSql);
+							    if(flag){
+							        alert("保存成功");
+							        db.close();
+								    //PageUtil.getWindowById("calendar_index").callFunction("getdate('"+timeStr+"')");
+								    window.close();
+							    }else{
+							       alert("保存失败")
+							    }
+							}
+					}
+				}
+			}
+		]]>
+	</script>
+</head>
+<header>
+	<titlebar title="编辑日程" iconhref="script:close" id="titlebar" hidericon="false" ricon="theme:image/titlebar/ok.png" clickricon="theme:image/titlebar/ok_click.png" riconhref="savesubmit()" />
+</header>
+<body>
+    <div class="label_left2">主题：</div>
+    <textarea rows="2" class="label_right2" id="subject" prompt="请输入会议主题"></textarea>
+    
+    <div class="label_left2">会议地点：</div>
+    <select id="Location" class="label_right2">
+    	<option>---选择会议地点---</option>
+    	<option value="集团公司第三会议室">集团公司第三会议室</option>
+    	<option value="北京中盐大厦东塔三楼会议室">北京中盐大厦东塔三楼会议室</option>
+    	<option value="新世纪日航饭店">新世纪日航饭店</option>
+    </select>
+    
+    <div class="label_left2">开始时间：</div>
+    <object type="date" class="label_right2" value="" id="StartDate_date" style="width:60%"/>
+    <object type="time" class="label_right2" value="null" id="StartDate_time" style="width:40%"/>
+    
+    <div class="label_left2">结束时间：</div>
+    <object type="date" class="label_right2" value="" id="EndDate_date" style="width:60%"/>
+    <object type="time" class="label_right2" value="" id="EndDate_time" style="width:40%"/>
+    
+    <div class="label_left2">主讲人：</div>
+    <input type="text" class="label_right2" value="" id="LeaderName" ricon="res:image/icon/search.png"/>
+    
+    <div class="label_left2">内容：</div>
+    <textarea rows="4" class="label_right2" id="MovementContent"></textarea>
+    
+    <input type="hidden" value="" id="Cid" />
+</body>
+</html>

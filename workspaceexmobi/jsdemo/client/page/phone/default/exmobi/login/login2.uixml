@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html id="login" isbridge="true" style="openanimation: fade">
+	<head>
+		<title show="false"/>
+		<link rel="stylesheet" type="text/css" href="res:css/global.css" />
+		<style type="text/css">
+		hr{
+			border-color:white;
+		}
+		body{
+			background-color:transparent;
+			padding:0 32;
+			color:white;
+		}
+		input[type=text]{
+			background-color:transparent;
+			border-size:0;
+			prompt-color:#ffffff;
+			color:white;
+			height:40;
+			padding:0;
+			margin:0;
+		}
+		input[type=password]{
+			background-color:transparent;
+			border-size:0;
+			prompt-color:#ffffff;
+			color:white;
+			height:40;
+			padding:0;
+			margin:0;
+		}
+		input[type="checkbox"]{
+			background-color:transparent;
+			border-size:1;
+			border-radius:0;
+			border-color:white;
+			height:54;
+			overlay:url(res:image/login2/cbo.png,res:image/login2/cbo_current.png);
+			color:white;
+		}
+		.login{
+			border-size:0;
+			border-radius:0;
+			color:white;
+			text-align:center;
+			overlay:none;
+			overlay-click:none;
+			click-color:white;
+			width:100%;
+		}
+		.reg{
+			border-size:1;
+			border-radius:0;
+			border-color:#aaaaaa;
+			color:#aaaaaa;
+			text-align:center;
+			overlay:none;
+			overlay-click:none;
+			background-color:transparent;
+			width:100%;
+		}
+		a{
+			font-size:18dp;
+			color:#aaaaaa;
+			text-decoration:none;
+		}
+		.cbo{
+			width:32;
+		}
+		</style>
+		<script type="text/javascript">
+			<![CDATA[
+				function getfeedata(){
+					var uid=document.getElementById("uid");
+					var uidMax=uid.getData("max");
+					alert(uidMax);
+				}
+				function dologin(){
+					getfeedata();
+					var username=document.getElementById("uid").value;
+					var password=document.getElementById("pwd").value;
+					var userinfo={
+						"uid":username,
+						"pwd":password
+					}
+				
+					if(username!=null&&password!==null)
+					{
+						//window.open("res:page/exmobi/main/main8.uixml",true,false,"","username="+username+"&password="+password);
+						window.open("res:page/exmobi/main/main8.uixml");
+						window.setStringSession("username",username);
+						window.setStringSession("password",password);
+						var userinfoe=EncryptionUtil.base64Encode(ClientUtil.jsonToString(userinfo));
+						console.log(userinfoe+"userinfoe");
+						console.log(userinfo.uid+"-------userinfo");
+						window.setStringSession("userinfoe",userinfoe);
+						document.cache.setCache("jsdemo_userinfoe",userinfoe);
+					}
+					else{
+						alert("用户名或者密码有问题！")
+					}
+				}
+			]]>
+		</script>
+	</head>
+	<body style="background-image:url(res:image/login2/bg.jpg)">
+		<br size="24"/>
+		<img src="res:image/login2/logo.png" style="width:100;align:center;"/>
+		<br size="12"/>
+		<input data-max="10" type="text" value="张三丰" licon="res:image/login2/user.png" prompt="帐户" id="uid"/>
+		<hr style="margin:0 4;"/>
+		<br size="8"/>
+		<input data-min="1" type="password" value="22222222" licon="res:image/login2/key.png" prompt="密码" id="pwd"/>
+		<hr style="margin:0 4;"/>
+		<br size="8"/>
+		<input type="checkbox" caption="记住用户名"/>
+		<input type="checkbox" caption="记住密码"/>
+		<br size="24"/>
+		<input type="button" value="登录" class="login" onclick="dologin()"/>
+		<input type="button" value="注册" class="reg"/>
+		<a style="align:center;">忘记密码？</a>
+	</body>
+</html>

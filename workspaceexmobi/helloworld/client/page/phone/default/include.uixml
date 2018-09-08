@@ -1,0 +1,26 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+    <head>
+
+        <meta  content="charset=utf-8"/>
+
+        <title show = "false">Hello World</title>       
+
+    </head>
+
+    <header>
+
+        <titlebar title="include标签测试" iconhref="script:close" hidericon="true" caption="返回"/>
+
+        <include src="res:page/5.5.0/slider.xhtml"/>
+
+    </header>   
+
+    <body>
+
+     include标签测试
+
+    </body>
+
+</html>
+

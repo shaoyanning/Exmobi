@@ -1,0 +1,146 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			
+		]]>
+		</script>
+	</head>
+	<body>
+		<indexbar id="bar1" isshowicon="true" footertext="省、直辖市">
+
+    <section text="A" indextext="A">
+
+        <item caption="安徽省" icon="res:image/province/皖.jpg" href="openImage('res:image/province/皖.jpg')"/>
+
+        <item caption="澳门" sndcaption="特别行政区"/>
+
+    </section>
+
+    <section text="B" indextext="B">
+
+        <item caption="北京" sndcaption="首都" icon="res:image/province/京.jpg" href="openImage('res:image/province/京.jpg')"/>
+
+    </section>
+
+    <section text="C" indextext="C">
+
+        <item caption="重庆" sndcaption="直辖市" icon="res:image/province/渝.jpg" href="openImage('res:image/province/渝.jpg')"/>
+
+    </section>
+
+    <section text="F"indextext="F">
+
+        <item caption="福建省" icon="res:image/province/闽.jpg" href="openImage('res:image/province/闽.jpg')"/>
+
+    </section>
+
+    <section text="G" indextext="G">
+
+        <item caption="甘肃省" icon="res:image/province/陇.jpg" href="openImage('res:image/province/陇.jpg')"/>
+
+        <item caption="广东省" icon="res:image/province/粤.jpg" href="openImage('res:image/province/粤.jpg')"/>
+
+        <item caption="广西省" icon="res:image/province/桂.jpg" href="openImage('res:image/province/桂.jpg')"/>
+
+        <item caption="贵州省" icon="res:image/province/黔.jpg" href="openImage('res:image/province/黔.jpg')"/>
+
+    </section>
+
+    <section text="H" indextext="H">
+
+        <item caption="海南省" icon="res:image/province/琼.jpg" href="openImage('res:image/province/琼.jpg')"/>
+
+        <item caption="河北省" icon="res:image/province/冀.jpg" href="openImage('res:image/province/冀.jpg')"/>
+
+        <item caption="河南省" icon="res:image/province/豫.jpg" href="openImage('res:image/province/豫.jpg')"/>
+
+        <item caption="黑龙江省" icon="res:image/province/黑.jpg" href="openImage('res:image/province/黑.jpg')"/>
+
+        <item caption="湖北省" icon="res:image/province/鄂.jpg" href="openImage('res:image/province/鄂.jpg') "/>
+
+        <item caption="湖南省" icon="res:image/province/湘.jpg" href="openImage('res:image/province/湘.jpg')"/>
+
+    </section>
+
+    <section text="J" indextext="J">
+
+        <item caption="吉林省" icon="res:image/province/吉.jpg" href="openImage('res:image/province/吉.jpg')"/>
+
+        <item caption="江苏省" icon="res:image/province/苏.jpg" href="openImage('res:image/province/苏.jpg')"/>
+
+        <item caption="江西省" icon="res:image/province/赣.jpg" href="openImage('res:image/province/赣.jpg')"/>
+
+    </section>
+
+    <section text="L" indextext="L">
+
+        <item caption="辽宁省" icon="res:image/province/辽.jpg" href="openImage('res:image/province/辽.jpg')"/>
+
+    </section>
+
+    <section text="N" indextext="N">
+
+        <item caption="内蒙区" sndcaption="自治区" icon="res:image/province/内蒙古.jpg" href="openImage('res:image/province/内蒙古.jpg')"/>
+
+        <item caption="宁夏区" sndcaption="自治区" icon="res:image/province/宁.jpg" href="openImage('res:image/province/宁.jpg')"/>
+
+    </section>
+
+    <section text="Q" indextext="Q">
+
+        <item caption="青海省" icon="res:image/province/青.jpg" href="openImage('res:image/province/青.jpg')"/>
+
+    </section>
+
+    <section text="S" indextext="S">
+
+        <item caption="山东省" icon="res:image/province/鲁.jpg" href="openImage('res:image/province/鲁.jpg')"/>
+
+        <item caption="山西省" icon="res:image/province/晋.jpg" href="openImage('res:image/province/晋.jpg')"/>
+
+        <item caption="陕西省" icon="res:image/province/陕.jpg" href="openImage('res:image/province/陕.jpg')"/>
+
+        <item caption="上海" sndcaption="直辖市" icon="res:image/province/沪.jpg" href="openImage('res:image/province/沪.jpg')"/>
+
+        <item caption="四川省" icon="res:image/province/川.jpg" href="openImage('res:image/province/川.jpg')"/>
+
+    </section>
+
+    <section text="T" indextext="T">
+
+        <item caption="台湾省" />
+
+        <item caption="天津" sndcaption="直辖市" icon="res:image/province/津.jpg" href="openImage('res:image/province/津.jpg')"/>
+
+    </section>
+
+    <section text="X" indextext="X">
+
+        <item caption="西藏区" sndcaption="自治区" icon="res:image/province/藏.jpg" href="openImage('res:image/province/藏.jpg')"/>
+
+        <item caption="香港" sndcaption="特别行政区"/>
+
+        <item caption="新疆区" sndcaption="自治区" icon="res:image/province/新.jpg" href="openImage('res:image/province/新.jpg')"/>
+
+    </section>
+
+    <section text="Y" indextext="Y">
+
+        <item caption="云南省" icon="res:image/province/滇.jpg" href="openImage('res:image/province/滇.jpg')"/>
+
+    </section>
+
+    <section text="Z" indextext="Z">
+
+        <item caption="浙江省" icon="res:image/province/浙.jpg" href="openImage('res:image/province/浙.jpg')"/>
+
+    </section>
+
+</indexbar>
+
+	</body>
+</html>

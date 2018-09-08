@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html>
+	<head>
+		<title show="false"/>
+		<link rel="stylesheet" type="text/css" href="res:css/global.css" />
+		<style type="text/css">
+		/*左右结构*/
+		.label-left{
+			width:32%;
+			margin:20 0;
+			color:#808080;
+			font-size:29;
+			font-weight:bold;
+			
+		}
+		.label-right{
+			width:68%;
+			margin:4 8 4 4;
+			color:#454545;
+			font-size:29;
+			height:50;border-size:0;
+			margin-top:80;
+		}
+		</style>
+		<script type="text/javascript" src="res:script/ued.base.js"></script>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		
+		<script type="text/javascript">
+		<![CDATA[
+			var init=function(){
+				//windown.open("res:page/exmobi/reg/info.uixml");
+				
+				var userInfo=EncryptionUtil.base64Decode(window.getStringSession("userInfoStr"));
+				
+				//console.log("*******************"+userInfo.username+userInfo.password+"************************");
+				
+				
+				
+				//var userInfoJson=ClientUtil.stringToJson(userInfo);
+				
+				var ajaxStr={
+					url:'http://test/infoShow.jsp',
+					method:'post',
+					//requestHeader:{'Content-Type':'application/json'},
+					data:userInfo,
+					successFunction:'suc',
+					failFunction:'fa'
+				}
+				var ajax=new Ajax(ajaxStr);
+				ajax.send();
+			}
+			var suc=function(data){
+				console.log("------!!!!-----success----------------------!!")
+				
+				  var rspp=ClientUtil.stringToJson(data.responseText);
+				  var rsp=rspp.userinfo;
+				//alert(userInfo+"=================");
+					//var rsp=data.responseText；
+					if(rspp.result=="success"){
+						$('#loginId').val(rsp.username);
+						$('#loginPwd').val(rsp.password);
+						if(rsp.sexMale!="")	
+							$("#sexMale").attr("checked",true);
+						else
+							$("#sexWmale").attr("checked",true);
+						$('#userName').val(rsp.userName);
+						$('#phoneNo').val(rsp.phoneNo);
+						$('#personId').val(rsp.personId);
+						$('#textArea').val(rsp.textArea);
+						$.showToast(rspp.msg);
+					}else{
+						$.showToast(rspp.msg);
+						window.close();
+					}
+			}
+			var fa=function(data){
+				$.showToast("请求失败，请检测网络！");
+			}
+		]]>
+		</script>
+	</head>
+	<header>
+		<titlebar title="个人信息" caption="" iconhref="script:close" hidericon="true" ricon="res:image/titlebar/ok.png" clickricon="res:image/titlebar/ok.png"/>
+	</header>
+	<body style="padding:4 12;" onload="init()">
+			<font class="label-left">登录账号：</font>
+			<input type="text" id="loginId" class="label-right" maxlength="11" siptype="num"/>
+			<hr/>
+			<font class="label-left">登录密码：</font>
+			<input type="password" id="loginPwd" class="label-right"/>
+			<hr/>
+			<!--<font class="label-left">确认密码：</font>
+			<input type="password" class="label-right"/>
+			<hr/>-->
+			<font class="label-left" id="">性别</font>
+			<input type="radio" id="sexMale" caption="男" name="sexGroup" value="0"></input>
+			<input type="radio" id="sexWmale" caption="女"name="sexGroup" value="1"></input>
+			<hr/>
+			<font class="label-left">姓名：</font>
+			<input type="text" id="userName" class="label-right" prompt="必填"/>
+			<hr/>
+			<font class="label-left">手机号：</font>
+			<input type="text" id="phoneNo" class="label-right" prompt="手机号" style="width:33%;"/>
+			<hr/>
+			<font class="label-left">身份证号：</font>
+			<input type="text" id="personId" class="label-right"></input>
+			<hr/>
+			<textarea id="textArea" rows="5" style="" prompt="备注信息"></textarea>		
+	</body>
+</html>

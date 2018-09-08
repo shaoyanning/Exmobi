@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html>
+	<head>
+		<title show="false"/>
+		<link rel="stylesheet" type="text/css" href="res:css/global.css" />
+		<style type="text/css">
+		body{
+			padding:0;
+			background-color:white;
+		}
+		.area{
+			background-image:url(res:image/main7/listbg.png);color:#aaaaaa;
+		}
+		.l{
+			width:50%;align:right;height:57;text-valign:middle;margin:0 0 0 8;
+		}
+		.r{
+			width:50%;height:57;text-valign:middle;text-align:right;margin:0 8 0 0;
+		}
+		</style>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript">
+			<![CDATA[
+				function init(){
+					var userInfo=ClientUtil.stringToJson(EncryptionUtil.base64Decode(window.getStringSession("userInfoStr")));
+					$("#username").attr("title",userInfo.user_name);
+					$("#department").html(userInfo.department);
+					$("#userTitle").html(userInfo.title);
+				}
+				function insert(){
+					
+				}
+			]]>
+		</script>
+		
+		
+	</head>
+	<header>
+		<titlebar id="username" title="许毛毛" iconhref="script:close" hidericon="true"/>
+		<div style="background-image:url(res:image/main7/topic.png);height:150;text-align:center;">
+			<font style="color:#666666;" id="department">烽火星空-业务产品部</font>
+			<br size="4"/>
+			<font style="color:#666666;" id="userTitle">平台产品体系</font>
+		</div>
+	</header>
+	<body onload="init()">
+		<div class="area" href="res:page/adduser.uixml">
+			<div class="l">
+				<img src="res:image/main7/mail.png" style="width:50"/>
+				<font>新增人员</font>
+			</div>
+		</div>
+		<div class="area">
+			<div class="r">
+				<font>待办</font>
+				<img src="res:image/main7/write.png" style="width:50"/>
+			</div>
+		</div>
+		<div class="area">
+			<div class="l">
+				<img src="res:image/main7/doc.png" style="width:50"/>
+				<font>公文</font>
+			</div>
+		</div>
+		<div class="area">
+			<div class="r">
+				<font>通讯录</font>
+				<img src="res:image/main7/addr.png" style="width:50"/>
+			</div>
+		</div>
+		<div class="area">
+			<div class="l">
+				<img src="res:image/main7/sound.png" style="width:50"/>
+				<font>通知公告</font>
+			</div>
+		</div>
+		<div class="area">
+			<div class="r">
+				<font>知识库</font>
+				<img src="res:image/main7/know.png" style="width:50"/>
+			</div>
+		</div>
+		<hr />
+	</body>
+</html>

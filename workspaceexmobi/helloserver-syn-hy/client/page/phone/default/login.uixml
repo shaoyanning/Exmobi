@@ -1,0 +1,43 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>登录</title>
+		<script>
+		<![CDATA[
+			function formsuc(data){
+				var rsp=ClientUtil.stringToJson(data.responseText);
+				var uid=document.getElementById("uid").value;
+				alert(uid);
+				if(rsp.result=="success"){
+					window.open("res:page/main.uixml?username="+uid);
+				}else{
+					alert(rsp.msg);
+				}
+			}
+			function formfail(data){
+				alert("请求失败！！");
+			}
+		]]>
+		</script>
+		<style type="text/css">
+			input{
+				width:100%;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<br size="40"/>
+		<form id="lgform" success="formsuc" fail="formfail" action="http://checklogin.jsp" method="post" style="margin: 20 3 3 3;">
+			<input validate="required" validatemsg="账号必填" type="text"  name="username" id="uid" prompt="please input username"></input>
+			<input type="password" name="password" id="pwd" prompt="please input password"></input>
+			<br/>
+			<input type="submit" value="提交"></input>
+
+		</form>
+		
+
+
+	</body>
+</html>

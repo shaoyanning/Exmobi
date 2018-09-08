@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html>
+	<head>
+		<title show="false"/>
+		<link rel="stylesheet" type="text/css" href="res:css/global.css"/>
+	</head>
+	<header>
+		<titlebar  title="详情" hidericon="true" iconhref="script:close"/>
+	</header>
+	<body style="padding:8">
+		<br/>
+		<font style="font-size:24dp;">主标题</font>
+		<br size="4"/>
+		<font style="font-size:16dp;color:#aaaaaa;">副标题</font>
+		<br size="8"/>
+		<hr/>
+		<br size="8"/>
+		<efont>
+	       <tab/>一把坚实的大锁挂在大门上，一根<subfont style="color:red;font-size:22">铁杆</subfont>费了九牛二虎之力，还是无法将它撬开。<br/>
+	       <tab/>钥匙来了，他瘦小的身子钻进锁孔，只轻轻一转，大锁就“啪”地一声打开了。<br/>
+	       <tab/>铁杆奇怪地问：“为什麽我费了那麽大力气也打不开，而你却轻而易举地就把它打开了呢？”<br/>
+	       <tab/>钥匙说：“因为我最了解他的心。”
+	    </efont>
+    </body>
+</html>

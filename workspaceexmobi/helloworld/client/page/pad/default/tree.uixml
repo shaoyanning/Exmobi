@@ -1,0 +1,24 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			
+		]]>
+		</script>
+	</head>
+	<body>
+		<tree id="" checkbox="true" caption="南方电网" title="组织架构">
+			<item caption="广东电网" href="" value="">
+				<item caption="河源局" href="" value=""></item>
+				<item caption="惠州局" href="" value=""></item>
+			</item>
+			<item caption="广西电网" href="" value="">
+				<item caption="河池局" href="" value=""></item>
+			</item>
+		</tree>
+		
+	</body>
+</html>

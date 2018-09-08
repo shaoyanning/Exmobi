@@ -1,0 +1,40 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>WebService</title>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		
+		<script>
+		<![CDATA[
+			function dosearch(){
+				var ipaddr =$("#ipaddr").val();
+				if(ipaddr ==" "){
+					$.showToast("please ip address!");
+					return;	
+				}
+				else{
+					$.server({
+						url:"http:/ipquery",
+						type:"post",
+						data:"{\"ipaddr\":\""+ipaddr+"\"}",  
+						dataType:"json",
+						success:function(data){
+							$("#addr").html(data.addr);
+						},
+						error:function(data){
+							$.showToast("请求失败，请检查网络！");
+						}
+					})
+				}
+			}
+		]]>
+		</script>
+		
+	</head>
+	<body>
+		<input type="text" value="" id="ipaddr" prompt="please input ip addrerss" name="" style="width:70%"></input>
+		<input type="button" value="查询" onclick="dosearch();"></input>
+		<font id="addr" style="color:blue;align:center"></font>
+	</body>
+</html>

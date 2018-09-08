@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html>
+	<head>
+		<title show="false"/>
+		<link rel="stylesheet" type="text/css" href="res:css/global.css"/>
+		<link rel="stylesheet" type="text/css" href="res:css/control.css"/>
+		<style type="text/css">
+		.label-left{
+			color:#aaaaaa;
+			width:30%;
+			font-size:20;
+		}
+		.label-right{
+			width:70%;
+		}
+		toggle{
+			background-color:#eeeeee;background-click-color:#eeeeee;iconwidth:28;border-size:0;border-color:#eeeeee;
+		}
+		</style>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript">
+			<![CDATA[
+				function dosub(){
+					$("#validate_form")[0].submit();
+				}
+				
+				function formsuc(data){
+					var rsp=ClientUtil.stringToJson(data.responseText);
+					if(rsp.result=="success"){
+						$.showToast(rsp.msg);
+					}else{
+						$.showToast(rsp.msg);
+						window.close();
+					}
+				}
+				
+				function formfail(data){
+					$.showToast("请求失败，请检测网络！");
+				}
+			]]>
+		</script>
+		
+		
+	</head>
+	<header>
+		<titlebar title="新增人员" ricon="res:image/titlebar/ok.png" clickricon="res:image/titlebar/ok_click.png" iconhref="script:close" riconhref="dosub();"/>
+	</header>
+	<body>
+	<form id="validate_form" action="http://adduser.jsp" method="post" success="formsuc" fail="formfail">
+		<font class="label-left red">姓名:</font>
+		<input type="text" name="username" validate="required" prompt="username" validatemsg="不能为空" class="label-right"/>
+		<hr class="odd"/><hr class="even"/>
+		<font class="label-left">登陆账号:</font>
+		<input type="text" name="loginid" validate="required" prompt="login name" validatemsg="登陆账号不能为空" class="label-right"/>
+		<hr class="odd"/><hr class="even"/>
+		<font class="label-left">密码:</font>
+		<input type="text" name="loginpwd" validate="required" prompt="input password" validatemsg="请输入密码" class="label-right"/>
+		<hr class="odd"/><hr class="even"/>
+		<font class="label-left">性别:</font>
+		<input type="radio" value="男" name="sex" checked="true" caption="男" />
+		<input type="radio" value="女" name="sex" checked="true" caption="女" />
+		<hr class="odd"/><hr class="even"/>
+		<font class="label-left">部门:</font>
+		<input type="text" name="department" validate="required" prompt="部门不能为空" validatemsg="请输入部门" class="label-right"/>
+		<hr class="odd"/><hr class="even"/>
+		<font class="label-left">职位：</font>
+		<input type="text" validate="required" name="title" prompt="不能为空" validatemsg="职位不能为空" class="label-right"/>
+		<hr class="odd"/><hr class="even"/>
+		<font class="label-left">电话：</font>
+		<input type="text" value="" name="tel" validate="tel" prompt="数字" validatemsg="请输入正确的电话号吗" class="label-right"></input>
+		<hr class="odd"/><hr class="even"/>
+
+	</form>
+	</body>
+</html>

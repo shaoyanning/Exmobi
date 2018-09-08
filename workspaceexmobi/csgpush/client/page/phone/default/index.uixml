@@ -1,0 +1,23 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			var init=function(){
+				var pushContent = window.getNativeParameter("pushContent");//此方法只能在应用插件入口页面使用
+				var useranme = window.getNativeParameter("username");
+				document.getElementById("user").innerHTML="你好,"+username;
+				document.getElementById("pushContent").innerHTML=pushContent;
+			}
+		]]>
+		</script>
+	</head>
+	<body onload="init()">
+		<font style="" id="user"></font>
+		<hr/>
+		<font id="pushContent"></font>
+		
+	</body>
+</html>

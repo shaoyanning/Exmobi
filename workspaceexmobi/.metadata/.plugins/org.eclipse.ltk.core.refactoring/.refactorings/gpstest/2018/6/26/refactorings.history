@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;locate.js&apos; to &apos;default&apos;&#x0D;&#x0A;－ 原始项目：“gpstest”&#x0D;&#x0A;－ 目标元素：“default”&#x0D;&#x0A;－ 原始元素：“locate.js”" description="复制文件" element1="client/script/phone/default/locate.js" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1530002787725" target="/jsdemo/client/page/phone/default" units="0" version="1.0"/>
+</session>

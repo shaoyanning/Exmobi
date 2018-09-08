@@ -1,0 +1,18 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			
+		]]>
+		</script>
+	</head>
+	<body>
+		<scroll id="" style="width: 200;height: 100;background-color: red;">
+			<font>lsajfa;fda;jyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuhjhhhhhhhhhhkgjfgioighhggglgfghibvfuhijyghikujytghuihuyjygukuhluikujyvkhluikjvuibvjkuvgjuksklfk;</font>
+		</scroll>
+		
+	</body>
+</html>

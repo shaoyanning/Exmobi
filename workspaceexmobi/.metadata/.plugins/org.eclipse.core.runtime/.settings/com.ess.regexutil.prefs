@@ -1,0 +1,5 @@
+defaultRegex=(19|20)\\d\\d([- /.])(0[1-9]|1[012])\\2(0[1-9]|[12][0-9]|3[01])
+defaultReplacement=1920$210$201
+defaultText=1900-01-01 2007/08/13 1900.01.01 1900 01 01 1900-01.01 1900 13 01 1900 02 31
+eclipse.preferences.version=1
+saved=true

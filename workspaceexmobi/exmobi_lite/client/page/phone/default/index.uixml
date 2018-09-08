@@ -1,0 +1,41 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>ExMobi Lite框架</title>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript" src="res:script/exmobi_lite/template-native-exmobi.js"></script>
+		<script>
+		<![CDATA[
+		]]>
+		</script>
+	</head>
+	<header>
+		<tabbar tabtype="trapezia" col="2" showtype="text">
+			<tab text="示例" bindpage="example"></tab>
+			<tab text="说明" bindpage="info"></tab>
+		</tabbar>
+	</header>
+	<body>
+		<page id="example">
+			<listitem type="twoline" caption="dom基本操作" sndcaption="基于选择器的dom操作" href="res:page/dom.uixml"></listitem>
+			<listitem type="twoline" caption="异步请求" sndcaption="封装基于ExMobi的异步请求" href="res:page/ajax.uixml"></listitem>
+			<listitem type="twoline" caption="dom数据注入" sndcaption="dom的高级用法" href="res:page/render.uixml"></listitem>
+			<listitem type="twoline" caption="常用封装" sndcaption="ExMobi常用方法的简化用法" href="res:page/comm.uixml"></listitem>
+		</page>
+		<page id="info">
+			<div style="border-radius: 8;border-size:1;padding:10;margin:4 0;">
+				ExMobi Lite框架是用于UIXML中的类似于jQuery的JS框架。用法类似于$(selector)。
+			</div>
+			<div style="border-radius: 8;border-size:1;padding:10;margin:4 0;">
+				使用时需引用core.js（核心类）和template.js（artTemplate的简洁语法，用于数据注入）。
+			</div>
+			<div style="border-radius: 8;border-size:1;padding:10;margin:4 0;">
+				ExMobi Lite默认会占用$作为操作符，如有其它框架也使用了$作为操作符，请最后引用ExMobi Lite，这时候ExMobi Lite将出让$的使用权。可以使用ExMobiLite(selector)代替原$操作。
+			</div>
+			<div style="border-radius: 8;border-size:1;padding:10;margin:4 0;">
+				当ExMobi Lite出让$使用权的时候，可以通过ExMobiLite.noConflict()挂靠新的操作符，比如：var $a = ExMobiLite.noConflict();后续则可通过$a(selector)进行操作。
+			</div>
+		</page>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<slidingcontainer>
+
+    <slidingitem><img src="res:image/1.jpg" /></slidingitem>
+
+    <slidingitem><img src="res:image/2.jpg" /></slidingitem>
+
+    <slidingitem><img src="res:image/3.jpg" /></slidingitem>
+
+</slidingcontainer>

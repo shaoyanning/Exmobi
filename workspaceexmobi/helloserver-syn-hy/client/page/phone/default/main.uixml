@@ -1,0 +1,20 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title >主页</title>
+		<script>
+		<![CDATA[
+			function init(){
+			 	var username=window.getParameter("username");			 		
+			 	document.getElementById("welcome").innerHTML = "你好"+username;
+			}
+		]]>
+		</script>
+	</head>		
+	<body onload="init()">
+		<font style="" id="welcome">welcome</font>
+		<a href="res:page/index.uixml" target="_blank" style="" urltype="">天气查询</a>
+		
+	</body>
+</html>

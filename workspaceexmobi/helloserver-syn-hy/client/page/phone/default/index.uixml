@@ -1,0 +1,78 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<style type="text/css">
+			listitem{
+				iconvalign:top;
+				riconvalign:top;
+			}
+		</style>
+		
+		<script>
+		<![CDATA[
+			var toast=null;
+			function init(){
+				var username=window.getParameter("username");
+				document.getElementById("welcome").innerHTML="你好"+username;
+			}
+			
+			var toast=new Toast();
+			
+			function dosearch(){
+				var city=document.getElementById("city").value;
+				if(city.lenght<1){
+					toast.setText("请输入城市名");
+					toast.show();
+					return;
+				}
+				var ajaxJson={
+					"url":"http://querylocate",
+					"method":"POST",
+					"data":"city="+city,
+					"successFunction":"sucfunc",
+					"failFunction":"failfunc",
+					"isBlock":true
+				}
+				var ajax =new Ajax(ajaxJson);
+				ajax.send();
+			}
+			function sucfunc(data){
+				var rspJson = ClientUtil.stringToJson(data.responseText);
+				console.log(data.responseText);
+				//console.log("*****"+ClientUtil.stringToJson(data.responseText));
+				//console.log(rspJson+"****");
+				if(rspJson.error == 0){
+					var innserStr="";
+					var weather_data=rspJson.results[0].weather_data;
+					for(var i=0;i<weather_data.length;i++){
+						innserStr+='<listitem type="twoline" cached="true" icon="'+weather_data[i].dayPictureUrl+'" ';
+						innserStr+='caption="'+weather_data[i].date+'" rcaption="'+weather_data[i].weather+'" sndcaption="'+weather_data[i].wind+'|'+weather_data[i].temperature+'" ';
+						innserStr+='ricon="'+weather_data[i].nightPictureUrl+'"></listitem>';
+					}
+					/*window.beginPreferenceChange();*/
+					document.getElementById("location").innerHTML=innserStr;
+					window.endPreferenceChange();
+				}else{
+					toast.setText("接口响应失败");
+					toast.show();
+				}
+				
+			}
+			function failfunc(data){
+				alert("请求失败！");
+			}
+		]]>
+		</script>
+	</head>
+	<body>
+		<input id="city" type="text" value="广州" name="city" style="width:30%;"></input>
+		<input id="cm" type="button" value="查询" name="" onclick="dosearch();" style="width:30%"></input>
+		<div id="location">
+			<!--<listitem type="twoline" cached="true" icon="http://api.map.baidu.com/images/weather/day/duoyun.png" 
+		caption="周三 06月27日 (实时：33℃)" rcaption="多云" sndcaption="无持续风向微风  34 ~ 26℃" 
+		ricon="http://api.map.baidu.com/images/weather/night/duoyun.png"></listitem>-->
+		</div>
+	</body>
+</html>

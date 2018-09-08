@@ -1,0 +1,19 @@
+<%-- ExMobi JSP文件，注释和取消快捷键统一为Ctrl+/ 多行注释为Ctrl+Shift+/ --%>
+<%@ page language="java" import="java.util.*,org.json.*"
+ contentType="application/uixml+xml; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/client/adapt.jsp"%>
+<%@ include file="/client/adapt_extend.jsp"%>
+<% 
+	//获取客户端数据
+	String username = aa.req.getParameter("username");
+	String password = aa.req.getParameter("password");
+	
+	//响应JSON 
+	JSONArray array = new JSONArray();
+	//链接数据库并查询
+	TableRow row = aa.db.queryRow("mysql_db_1", "select * from t_userinfo where username=? and password=?", new Object[]{username,password});
+	if(row !=null){
+		
+	}
+	
+%>

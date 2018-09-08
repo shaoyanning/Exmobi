@@ -1,0 +1,56 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>常用封装</title>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript" src="res:script/exmobi_lite/template-native-exmobi.js"></script>
+		<script>
+		<![CDATA[
+			$(document).on('onstart', function(){
+				alert('页面激活事件触发');
+			});
+		]]>
+		</script>
+	</head>
+	<body>
+		<font style="color: #c0392b;">JSON操作</font>
+		<div style="margin:4 0;">
+			var str = $.JSON.stringify(json);//将JSON对象转为字符串
+		</div>
+		<div style="margin:4 0;">
+			var json = $.JSON.parse(str);//将字符串转为JSON对象
+		</div>
+		
+		<font style="color: #c0392b;">常用封装</font>
+		<div style="margin:4 0;">
+			$.showMask();//显示进度条
+		</div>
+		<div style="margin:4 0;">
+			$.hideMask();//隐藏进度条
+		</div>
+		<div style="margin:4 0;">
+			$.showToast(msg);//显示toast提示信息
+		</div>
+		<div style="margin:4 0;">
+			$.alert(msg, okFunc);//显示alert提示信息
+		</div>
+		<div style="margin:4 0;">
+			$.confirm(msg, okFunc, cancleFunc);//显示confirm提示信息
+		</div>
+		<div style="margin:4 0;">
+			$.preferenceChange(func);//批处理func内的dom操作，dom操作中有比较大的变化时需要放置在此，以提升处理效率
+		</div>
+		
+		<font style="color: #c0392b;">工具集函数</font>
+		<div style="margin:4 0;">
+			var json = $.util.paramsToJSON(params);//将键值对参数转为json对象
+		</div>
+		
+		<font style="color: #c0392b;">窗口函数</font>
+		<div style="margin:4 0;">
+			$.w.open(uixmlTemplatePath, json, target);//将整个uixml文件作为模板，使用json渲染后打开此窗口，target为_blank|_self
+			<input type="button" value="打开新窗口" onclick="$.w.open('res:page/template/uixml.template?a=44', {'title':'新窗口', 'data':1})" style="width:100%;"></input>
+		</div>
+	</body>
+</html>

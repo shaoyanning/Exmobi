@@ -1,0 +1,24 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			function dofile(filename,fileurl){
+				
+			}
+		]]>
+		</script>
+	</head>
+	<body>
+		<!--<fileset id="1111" caption="预览附件">
+			<item text="公务考试指南" href="http://www.hrssgz.gov.cn/rczp/gwyzk/gwyzkgg/201802/P020180206560371711913.doc" options="111" id="11"></item>
+			<item text="成绩" href="http://www.hrssgz.gov.cn/rczp/gwyzk/gwyzkgg/201802/t20180206_274788.html" options="111" id="222"></item>
+		</fileset>-->
+		<listitem type="oneline" icon="" caption="下载" urltype="openfile" href="http://www.hrssgz.gov.cn/rczp/gwyzk/gwyzkgg/201802/P020180206560371711913.doc?filename=广州市2018年考试录用公务员报考指南.doc"></listitem>
+		<listitem type="oneline" icon="" caption="成绩" urltype="download" href="http://www.hrssgz.gov.cn/rczp/gwyzk/gwyzkgg/201802/P020180206560371711913.doc?filename=广州市2018年考试录用公务员报考指南.doc"></listitem>
+		<listitem type="oneline" icon="" caption="职位表" urltype="download" href="http://www.hrssgz.gov.cn/rczp/gwyzk/gwyzkgg/201802/P020180206560371711913.doc?filename=广州市2018年考试录用公务员报考指南.doc"></listitem>
+
+	</body>
+</html>

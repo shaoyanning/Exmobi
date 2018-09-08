@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html>
+	<head>
+		<title show="false"/>
+		<style type="text/css">
+		input[type=text]{
+			background-color:transparent;
+			border-size:0;
+			border-radius:4;
+			margin:3 0;
+			height:50;
+			padding:0 4;
+			color:#525252;
+		}
+		input[type=password]{
+			background-color:transparent;
+			border-size:0;
+			border-radius:4;
+			margin:3 0;
+			height:50;
+			padding:0 4;
+			color:#525252;
+		}
+		font{
+			color:#8f8f8f;
+		}
+		switch{ 	
+			overlay:none;
+			border-radius: 16;
+			align:right;
+		}
+		input[type="button"]{
+			width:100%;
+			margin:4 0 4 0;
+			height:45;
+			font-size:20dp;
+			border-radius:4;
+		}
+		.card{
+			border-radius:4;border-size: 1;border-color: #d9d9d9;background-color: white;
+		}
+		</style>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript">
+			<![CDATA[
+		var lcc=function(){
+				var cacheName=document.cache.getCache("username");
+		     	var cachePwd=document.cache.getCache("password");
+		     	var remTag=document.cache.getCache("my_tag");
+				//alert(remTag+cacheName);
+				
+				if(remTag=="remjjjjjjj"){
+					$("#username").val(cacheName);
+					$("#password").val(cachePwd);
+					$("#switch").attr("checked",true);
+				}else{
+					$("#switch").attr("checked",false);
+				}
+ 		       
+		}	
+		var ch=function(){
+					if(!document.getElementById("switch").checked)		
+					{	
+						$("#password").val("");
+						$("#username").val("");
+					}else{
+						
+					}
+		}
+		var suc=function(data){
+				//alert("0000000");
+				console.log(data.responseText+"LINE--------->>>>>>>>><<<<<<<");
+				var rsp = ClientUtil.stringToJson(data.responseText);
+				if(rsp.result == "success"){
+					
+					var userInfo=EncryptionUtil.base64Encode(ClientUtil.jsonToString(rsp.userinfo));
+					
+					window.setStringSession("userInfoStr",userInfo)
+					
+					//alert(rsp.userinfo.username);
+					
+					document.cache.setCache("username",rsp.userinfo.username);
+					if($("#switch").attr("checked")){
+					   document.cache.setCache("username",rsp.userinfo.username);
+					   document.cache.setCache("password",rsp.userinfo.password);
+					   document.cache.setCache("my_tag","remjjjjjjj");
+					}
+					else{
+						document.cache.remove("my_tag");
+						document.cache.remove("username");
+						document.cache.remove("password");
+						ch();
+					}
+					 
+					 					 
+					window.open("res:page/exmobi/main/main.uixml");
+				}else{
+					$.showToast(rsp.msg);
+					window.open("res:page/exmobi/error/error.uixml");
+				}
+				}
+		var fail=function(data){
+			     $.showToast("请求失败，请检查网络-LINE-61-LOGIN.UIXML")
+		        }
+			]]>
+		</script>
+		
+		
+	</head>
+	<body style="background-color:#f4f4f4;padding:0 10;" onload="lcc()">
+		<form id="form" method="post" action="http://test/login.jsp" success="suc()" fail="fail()">
+			<br size="40"/>
+			<img src="res:image/login3/logo.png" style="width:40%;align:center;"/>
+			<br size="40"/>
+			<div class="card">
+				<input type="text" id="username" name="username" prompt="请输入用户名" licon="res:image/login3/user.png"/>
+				<hr/>
+				<input type="password" id="password" name="password" prompt="请输入密码" licon="res:image/login3/pwd.png"/>
+			</div>
+			<br size="5"/>
+			<font>记住密码</font>
+			<switch id="switch" ontext="" offtext="" value="0"  checked="false" onclick="ch()" ></switch>
+			<br size="5"/>
+			<input type="submit" style="width: 80%;align: center;" value="登录"/>
+		</form>
+	</body>
+</html>

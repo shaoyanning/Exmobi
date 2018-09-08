@@ -1,0 +1,11 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<htmlgroup id="group1">
+
+<main src="res:page/htmlgroup/middle.uixml"/>
+
+<left src="res:page/htmlgroup/left.uixml" width="30%"/>
+
+<right src="res:page/htmlgroup/right.uixml" width="80%"/>
+
+</htmlgroup>
+ 

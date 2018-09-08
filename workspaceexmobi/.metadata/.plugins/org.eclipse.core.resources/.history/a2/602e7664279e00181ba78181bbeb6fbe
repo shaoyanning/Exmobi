@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<maxml version="2.0" xmlns="http://www.nj.fiberhome.com.cn/map"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.nj.fiberhome.com.cn/map maxml-2.0.xsd">
+  <config>
+    <htmlformat wellformat="true" />
+    <filepreviewconfig wordtohtml="true"/>
+  </config>
+  <database id="mysqldb" user="root" passowrd="123456" dbtype="mysql" dbname="web" url="jdbc:mysql://127.0.0.1:3306/web"></database>
+</maxml>

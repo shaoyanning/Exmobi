@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="将资源“execise_1/client/page/phone/default/exmobi/login/login1.uixml”重命名为“login.uixml”" description="重命名资源“login1.uixml”" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="client/page/phone/default/exmobi/login/login1.uixml" name="login.uixml" stamp="1534073797760" updateReferences="true"/>
+</session>

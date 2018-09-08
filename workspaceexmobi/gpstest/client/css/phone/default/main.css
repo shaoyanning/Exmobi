@@ -1,0 +1,134 @@
+/*
+*	ExMobi4.0 CSS
+*	Version	: 1.0.0
+*	Author	: gaomingzhu
+*	Email	: 
+*	Weibo   : 
+*   Copyright 2015 (c) 
+*/
+
+.c1{
+	color:#83899a;
+}
+.c2{
+	color:#a2a9bf;
+}
+.c3{
+	color:white;
+}
+.c4{
+	color:#1f1f1f;
+}
+.c5{
+	color:#66676b
+}
+.c6{
+	color:#d8ddee
+}
+.c7{
+	color:#bbbbbb
+}
+.c8{
+	color:#c8c8c8;
+}
+.c8{
+	color:black;
+}
+.pc7{
+	prompt-color: #bbbbbb
+}
+.bg1{
+	background-color:#eb431d;
+}
+.bg2{
+	background-color:#e85332;
+}
+.bg3{
+	background-color:white;
+}
+.bg4{
+	background-color:#f0f0f0;
+}
+.bg5{
+	background-color:#70b92c;
+}
+.bg6{
+	background-color:#f9f9f9;
+}
+
+.l{
+	font-size:24;
+}
+.l1{
+	font-size:20;
+}
+.l2{
+	font-size:26;
+}
+.xl{
+	font-size:28;
+}
+.m{
+	font-size:18;
+}
+.s{
+	font-size:16;
+}
+
+.tc{
+	text-align:center;
+}
+.tr{
+	text-align:right;
+}
+.tl{
+	text-align:left;
+}
+.ar{
+	align:right;
+}
+.ac{
+	align:center;
+}
+.location1{
+	margin:15 5 0 5;
+}
+.location2{
+	margin:5 5 0 5;
+}
+.tmenu{
+			width:33%;
+			font-size:18dp;
+			text-align:center;
+			text-valign:middle;
+			color:#1f1f1f;
+		}
+.w45{
+	width:45%;
+}		
+.zt{
+	statusbar-background-color:#e85332;
+	statusbar-mode:light;
+}
+
+.grid{
+	font-size:20dp;
+	cell-width:35%;
+	text-align:center;
+	text-valign:middle;	
+	background-color:white;
+	tip-border-size:0;
+	tip-background-color:transparent;
+	tip-background-image:url(res:image/quan.png); 
+	tip-overlay:none;
+	tip-color:white;
+	tip-width:24;
+	tip-height:24;
+	iconwidth:55dp;
+	iconheight:55dp;
+}
+.grid-text{
+	cell-width:64;
+	current-color:#333333;
+}
+

@@ -1,0 +1,47 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title show="false">聚合API</title>
+		<script>
+		<![CDATA[
+			
+		]]>
+		</script>
+	</head>
+	<header style="" class="" id="">
+		<titlebar rcaption="" title="聚合API" iconhref="window.close()" riconhref="script:exit"></titlebar>
+	</header>
+	
+	<body>
+		<!--<input type="text" value="" name="" id="username"></input>-->
+		<div style="background-click-image:res:image/slice/bg-c.png; background-image: res:image/slice/bg.png;width:50%;height:310;text-valign:middle; text-align: center;align: center;">
+			<img id="1" src="res:image/slice/live.png" href="" style="width: 144;height:144;align: center;"></img>		
+			<br/><font style="color:black">测试 </font>
+		</div>
+		<div style="background-click-image:res:image/slice/bg-c.png; background-image: res:image/slice/bg.png;width:50%;height:310;text-align: center;text-valign:middle;">
+			<img id="2" src="res:image/slice/car.png" href="" style="width: 144;height:144;align: center;"></img>
+			<br/><font style="color:black">测试 </font>
+		</div>
+		<div style="background-click-image:res:image/slice/bg-c.png; background-image: res:image/slice/bg.png;width:50%;height:310;text-valign:middle;text-align: center;align: center;">
+			<img id="3" src="res:image/slice/loc.png" href="" style="width: 144;height:144;align: center;"></img>
+			<br/><font style="color:black">测试 </font>
+		</div>
+		<div style="background-click-image:res:image/slice/bg-c.png; background-image: res:image/slice/bg.png;width:50%;height:310;text-valign:middle;text-align: center;">
+			<img id="4" src="res:image/slice/travl.png" href="" style="width: 144;height:144;align: center;"></img>
+			<br/><font style="color:black">测试 </font>
+		</div>
+		<div style="background-click-image:res:image/slice/bg-c.png; background-image: res:image/slice/bg.png;width:50%;height:310;text-valign:middle;text-align: center;align: center;">
+			<img id="5" src="res:image/slice/money.png" href="" style="width: 144;height:144;align: center;"></img>
+			<br/><font style="color:black">测试 </font>
+		</div>
+		<div style="background-click-image:res:image/slice/bg-c.png; background-image: res:image/slice/bg.png;width:50%;height:310;text-valign:middle;text-align: center;">
+			<img id="6" src="res:image/slice/theatre.png" href="" style="width: 144;height:144;align: center;"></img>
+			<br/><font style="color:black">测试 </font>
+		</div>
+		<div style="background-click-image:res:image/slice/bg-c.png; background-image: res:image/slice/bg.png;width:50%;text-align: center;">
+			<img id="7" src="res:image/slice/more.png" href="" style="width: 144;height:144;align: center;"></img>
+			<br/><font style="color:black">测试 </font>
+		</div>
+	</body>
+</html>

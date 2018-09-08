@@ -1,0 +1,65 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>dom数据注入</title>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript" src="res:script/exmobi_lite/template-native-exmobi.js"></script>
+		<script>
+		<![CDATA[
+			function doRender(){
+				$.setup({
+					ajaxHandler : $.server
+				});
+				//当有异步请求的时候，只能在回调中获得注入后的数据
+				//$.provider('res:page/template/my.template', 'http://domain/server.jsp', function(h, t, o){
+				//	$('#content').html(h);
+				//});
+				
+				//如果模板和数据都是不需要异步请求的，则可以直接通过返回值获得注入内容，而不需要回调函数
+				//var html = $.provider('res:page/template/my.template', {"list":["Agile Lite移动前端框架", "ExMobi三大引擎完美融合"]});
+				//$('#content').html(html);
+				
+				//也可以直接使用renderReplace|renderAfter|renderBefore注入到某个对象里
+				//$.renderReplace('#content', 'res:page/template/my.template', 'http://domain/server.jsp', function(h, t, o){
+				//	alert(h);
+				//});
+				
+				//更简单的用法就是直接对dom操作，数据注入的时候会为每个没有设置id的对象添加id
+				$('#content').renderAfter('res:page/template/my.template', 'http://domain/server.jsp', function(h, t, o){
+					//给注入后的dom添加对象
+					$(h).on('href', function(h){
+						alert('您点击了id为'+this.id+'的'+this.name);
+					});
+				});
+
+			}
+		]]>
+		</script>
+	</head>
+	<body>
+		<font style="color: #c0392b;">数据注入函数</font>
+		<div name="aa" style="margin:4 0;">
+			$(selector).renderReplace(str, data, callback);//注入后的数据替换原来dom内的内容
+		</div>
+		<div style="margin:4 0;">
+			$(selector).renderAfter(str, data, callback);//注入后的数据在dom内尾部插入
+		</div>
+		<div style="margin:4 0;">
+			$(selector).renderBefore(str, data, callback);//注入后的数据在dom内顶部插入
+		</div>
+		<div style="margin:4 0;">
+			注：
+		</div>
+		<div style="margin:4 0;">	
+			str可以为模板的字符串、http地址（走Ajax服务端异步请求）、res地址
+		</div>
+		<div style="margin:4 0;">
+			data可以为json对象、http地址（走Ajax服务端异步请求）、res地址
+		</div>
+		<div style="text-align: center;">
+			<input id="btn" type="button" value="点击测试" onclick="doRender()" style="width: 100%;"></input>
+		</div>
+		<div id="content"></div>
+	</body>
+</html>

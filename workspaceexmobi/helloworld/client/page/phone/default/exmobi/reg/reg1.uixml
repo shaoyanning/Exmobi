@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html>
+	<head>
+		<title show="false"/>
+		<link rel="stylesheet" type="text/css" href="res:css/global.css" />
+		<style type="text/css">
+		/*左右结构*/
+		.label-left{
+			width:32%;
+			margin:8 4;
+			color:#808080;
+		}
+		.label-right{
+			width:68%;
+			margin:4 8 4 4;
+			color:#454545;
+			height:48;border-size:0;
+		}
+		</style>
+		<script type="text/javascript" src="res:script/ued.base.js"></script>
+		<script type="text/javascript">
+		<![CDATA[
+			function goapphome(){
+				Util.execScript("script:goapphome");
+			}
+		    function exit(){
+				confirm("您确定要返回主页吗？",goapphome,null);
+		    }
+		    //点击发送验证码
+		    function activebtn(){
+			    if($ui("vail")["className"].indexOf("run")>0){
+				    return;
+				}
+				if($ui("phone").val().length!=11){
+					$ui("vail").attr("disabled","true");
+					$ui("vail").val("发送验证码");
+					return;
+				}
+				if($ui("phone").check("phone")==false){
+					$ui("vail").attr("disabled","true");
+					$ui("vail").val("发送验证码");
+					return;
+				}
+			    t=10;
+			    $ui("vail").attr("disabled","false");
+				$ui("vail").val("发送验证码");
+		    }
+		    //倒计时
+		    var interval;
+		    var t=10;
+		    function countdown(){
+		    	$ui("vail").addClass("run");
+			    $ui("vail").attr("disabled","true");
+			    interval=window.setInterval("count()",1000);
+			}
+			function count(){
+				$ui("vail").val(t--+"秒");
+				if(t<0){
+					window.clearInterval(interval);
+					$ui("vail").removeClass("run");
+					activebtn();
+				}
+			}
+		]]>
+		</script>
+	</head>
+	<header>
+		<titlebar title="注册" caption="" iconhref="script:close" hidericon="true" ricon="res:image/titlebar/ok.png" clickricon="res:image/titlebar/ok.png"/>
+	</header>
+	<body style="padding:4 12;">
+			<font class="label-left">手机号：</font>
+			<input type="text" id="phone" class="label-right" maxlength="11" siptype="num" ontextchanged="activebtn()" prompt="" ricon="res:image/login1/logo.png"/>
+			<hr/>
+			<font class="label-left">密码：</font>
+			<input type="password" class="label-right"/>
+			<hr/>
+			<font class="label-left">确认密码：</font>
+			<input type="password" class="label-right"/>
+			<hr/>
+			<font class="label-left">验证码：</font>
+			<input type="text" class="label-right" prompt="验证码" style="width:33%;"/>
+			<input type="button" id="vail" value="发送验证码" style="width:35%;" class="valibtn" disabled="true" onclick="countdown()"/>
+			<hr/>
+			<br size="4"/>
+			<input type="button" value="注册" style="width:100%;margin:4 0;" onclick="script:close"/>
+	</body>
+</html>

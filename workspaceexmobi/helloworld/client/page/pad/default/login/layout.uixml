@@ -1,0 +1,30 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			function goback(){
+				window.alert("先弹出对话框");
+				window.close();
+			}
+		]]>
+		</script>
+	</head>
+	<header>
+				<a href="javascript:goback()" target="_blank" style="" urltype="download">返回</a>
+	</header>
+	<body style="padding:0 10;">
+		<div style="background-color: red;width:50%;margin:40 20 30 20;padding:10 15 10 5;text-align: right;align: center;">
+			<font style="color:white">this is div </font>
+		</div>
+		<div style="background-color: blue;width:50%;margin:40 20 30 20;">
+			<font style="color:white">this is div </font>
+		</div>
+		<ediv style="background-color: yellow;align:center;" class="" id="">
+			<font style="color:green;">dddddd</font>
+		</ediv>
+		
+	</body>
+</html>

@@ -1,0 +1,16 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html isbridge="true">
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			
+		]]>
+		</script>
+	</head>
+	<body>
+		<webview url="res:page/page/www/index.html"></webview>
+		
+	</body>
+</html>

@@ -1,0 +1,19 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title><%=title%></title>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript" src="res:script/exmobi_lite/template-native-exmobi.js"></script>
+		<script>
+		<![CDATA[
+			function doLoad(){
+				alert('接收到参数：'+window.getParameter('a'));
+			}
+		]]>
+		</script>
+	</head>
+	<body onload="doLoad()">
+		这是一个新窗口
+	</body>
+</html>

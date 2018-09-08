@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html id="editCalendar">
+<head>
+	<title show="false" />
+	<link rel="stylesheet" type="text/css" href="res:css/global.css" />
+	
+	<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+	<script type="text/javascript" src="res:script/exmobi_lite/template-native-exmobi.js"></script>
+	
+	
+	<style>
+		.label_left2{padding:5 0;}
+		#poster_id{
+			
+		}
+		#poster_img_bak{
+			width:60%;
+			height:60%;
+			align:center;
+		}
+		.remarks_participator_style{
+			font-size:30;
+			font-weight:bold;
+			margin:5 8 5 8;
+		}
+	</style>
+	<script>
+		<![CDATA[
+		//海报活动上传
+		var loadphoto=function(){	
+				var obj=document.getElementById("photouploadid");
+				    obj.openCameraUpload(true);	            
+		}
+		
+		//photoupload控件，选择照片时 确定或者返回 触发的回调函数
+		var callback=function(){	
+			//获取photoupload 对象
+			var obj=document.getElementById("photouploadid");
+			 
+			 //判断是否有选中照片
+			 if(obj.length>0){
+			 	$("#div_hide").hide();
+			 	$("#div_show").show();
+			 }
+			 else{
+			 	$("#div_hide").show();
+				$("#div_show").hide();
+				return;
+			 }
+			 
+			 //往后台发送图片信息
+			 var arr=new Array();
+			 
+			 //获取选中图片本地路径
+			 var imgpaths=obj.getFilePaths();
+			 if(imgpaths.length>0){
+			 	arr.push({type:'1',name:'photouploadid',value:imgpaths[0]});
+			 }
+			
+			 //FormSubmit Json格式
+			 var form_sumbit_bodys={
+			 	url:'http://test/activitymain.jsp',
+			 	data:arr,
+			 	method:post,
+			 	successFunction:'suc_fuc',
+			 	failFunction:'fail_fuc',
+			 	progressFunction:'pro_fuc',
+			 	isBlock:true,
+			 	timeout:'45',
+			 	connectTimeout:'15'
+			 }	
+			
+			 var forsubmit=new FormSubmit(form_sumbit_bodys);
+			 	 forsubmit.send();	 
+		}
+		
+			//FormSubmit成功回调函数
+			var suc_fuc=function(data){
+				var rsp=ClientUtil.stringToJson(data.responseText);
+				if(rsp.result=="success"){
+					$("#poster_img_uuid").val(rsp.poster_img_uuid);
+				}
+				else{
+					$.showToast(rsp.msg);
+				}
+			}
+			//FormSubmit失败回调函数
+			var fail_fuc=function(data){
+				$.showToast("请求失败，请检测网络");
+			}
+			//FormSubmit上传进度回调函数
+			var pro_fuc=function(data){
+				
+			}
+			
+		//photoupload控件，删除选中图片回调函数		
+		var testondelete=function(){
+			var obj=document.getElementById("photouploadid");
+    		callback();
+    		if(obj.length==0)
+    		{
+    			$("#div_hide").show();
+			 	$("#div_show").hide();
+			 	$("#poster_img_uuid").val("");
+    		}
+    		else{
+    			$("#div_hide").hide();
+			 	$("#div_show").show();
+    		}
+
+		}
+		
+		//发布活动页面提交
+		var savesubmit=function(){
+			
+		//提交前验证各个控件中是否有值
+			
+			//判断海报隐藏字段是否接收到后台返回的，存入数据库的UUID
+			if($("#poster_img_uuid").val()==""){
+				$.showToast("请添加活动海报");
+				return;
+			}
+			
+			//判断活动标题控件是否有内容
+			if($("#subject").val()==""){
+				$.showToast("请填写活动标题");
+				return;
+			}
+			//判断活动标题内容是否超过15
+			if($("#subject").val()!="" && $("#subject").val().length > 15){
+				$.showToast("互动标题不能超过15字");
+				return;
+			}
+			
+			//判断活动详情控件是否有值
+			if($("#subje").val()==""){
+				$.shwoToast("请填写活动详情");
+				return;
+			}
+			//
+			if($("#subje").val()!=""&&$("#subje").length < 1500){
+				$.showToast("活动详情不能超过1500字！")
+				return;
+			}
+			
+		}
+		
+		var sub9=function(){
+			//var obj9=$("#photouploadid_9");
+			var obj9=document.getElementById("photouploadid_9");
+				obj9.openCameraUpload(true);
+		}
+		var calbac9=function(){
+			var obj9=document.getElementById("photouploadid_9");			
+			if(obj9.length>0){
+				$("#activities_imgs_hide").hide();
+				$("#activities_imgs_show").show();
+			}
+			else{
+				$("#activities_imgs_hide").show();
+				$("#activities_imgs_show").hide();
+				return;
+			}
+			
+			var array=new Array();
+			
+			var send_data_json_bdy={
+				url:"http://test/activity_nine.jsp",
+				data:{},
+				type:array,
+			}
+			
+		}
+		var del9=function(){
+			var obj9=document.getElementById("#photouploadid_9");
+			calbac9();
+			
+		}
+		
+		]]>
+	</script>
+</head>
+<header>
+	<titlebar title="发布活动" iconhref="script:close" id="titlebar" hidericon="false" ricon="theme:image/titlebar/ok.png" clickricon="theme:image/titlebar/ok_click.png" riconhref="savesubmit()"/>
+</header>
+<body>
+	<!--发布活动海报模块-->
+	<div id="poster_id" style="width: 100%;height: 200; text-align: center;text-valign: middle;">
+		<div id="div_hide"  style="width: 100%;height: 200; text-align: center;text-valign: middle;">
+			<img id="poster_img_bak" src="res:image/activity/add-large.png" href="loadphoto()"></img>
+			<br size=""></br>
+			<font id="poster_img_bottom_txt" style="margin: 5 0 0 0; color:gray; ">添加活动海报</font>		
+		</div>
+		<div id="div_show" style="width: 100%;height:300; text-align: center;text-valign: middle; display: none;">
+			<!--<img id="testPictureId" style="width:20%;height:15%;"></img>-->			
+			<photoupload id="photouploadid" name="photoupload"  style="height:120;" onscroll="testonscroll()" onback="callback()" ondelete="testondelete()"/>
+		</div>
+		<div id="hiden_info" style="display: none;">
+			<input type='hidden' value="" id="poster_img_uuid"></input>
+		</div>
+	</div>
+	<div style="width: 100%;height: 10; background-color:gray;"></div>
+	<!--活动主题-->
+    <div class="label_left2" style="margin: 8 0 8 0;">
+    	<font style="margin: 2 0 5 0; font-size: 32; font-weight: bold;color: #RRGGBB">活动标题</font>
+    	<font style="color: red;">*</font>
+    	<hr style=""></hr>
+    	<textarea rows="2" style="height:60; margin: 5 0 5 0; border-radius:none; border-size: 0;" class="label_right2" id="subject" prompt="在此输入活动标题，15字以内..."></textarea>
+    </div>
+    <div style="width: 100%;height: 10; background-color:gray;"></div>
+<!--活动详情-->
+<div id="activity_details" style="margin: 2 0 10 0;">
+    <div class="label_left2" style="margin: 8 0 8 0;">
+    	<font style="margin: 2 0 5 0; font-size: 32; font-weight: bold;color: #RRGGBB">活动详情</font>
+    	<font style="color: red;">*</font>
+    	<hr style=""></hr>
+    	<textarea rows="2" style="height:110; margin: 5 0 5 0; border-radius:none; border-size: 0;" class="label_right2" id="subje" prompt="在此输入活动详情，1500字以内..."></textarea>
+    </div>
+    <hr style=""></hr>
+	<!--活动图片 小于 9 张-->    
+    <div id="activities_imgs_hide">
+    	<img id="activity_details_photos" src="res:image/activity/camera.png" style="margin:15 0 15 0; width: 20%;height: 12%;" href="sub9();"></img>
+    	<br/>
+        <font style="align: right;font-size: 20;color: gray;font-weight: bold;">做多支持9张图片</font>
+    </div>
+    <div id="activities_imgs_show" style="text-align: center;text-valign: center; display: none; height: 120;">
+    	<photoupload id="photouploadid_9" name="" style="" pwidth="" onscroll="" onback="calbac9();" ondelete="del9();"></photoupload>   	
+    </div>
+    <div id="hide_img_uuid">
+    	<input type="hidden" id="hide_9img_uuid" value=""></input>
+    </div>
+</div>
+    <div style="width: 100%;height: 10; background-color:gray;"></div>
+    
+<!--活动时间、地点-->    
+<div>
+	<div id="Date_Addr_Details">
+		<div id="DAD_Begin">
+			<font style="margin: 25 0 15 0; font-size: 32; font-weight: bold;color: #RRGGBB">开始时间</font>
+    		<font style="color: red;">*</font>
+    		<object type="date" id="DAD_Begin_Date" name="" value="" style="background-color:transparent; align: right;"></object>
+			<object type="time" id="DAD_Begin_Time" name="" value="" style="background-color:transparent; align: right;"></object>
+		</div>
+		<div id="DAD_End">
+			<font style="margin: 20 0 15 0; font-size: 32; font-weight: bold;color: #RRGGBB">结束时间</font>
+    		<font style="color: red;">*</font>
+    		<object type="date" id="DAD_End_Date" name="" value="" style="background-color:transparent; align: right;"></object>
+			<object type="time" id="DAD_End_Time" name="" value="" style="background-color:transparent; align: right;"></object>
+		</div>
+		<div id="DAD_Addr">
+			<font style="margin: 20 0 15 0; font-size: 32; font-weight: bold;color: #RRGGBB">地址</font>
+    		<font style="color: red;">*</font>
+			<textarea rows="2" style="height:60; margin: 5 0 5 0; border-radius:none; border-size: 0;" class="label_right2" id="DAT_Addr_Details" prompt="在此输入活动标题，15字以内..."></textarea>
+		</div>
+	</div>
+</div>
+    <div style="width: 100%;height: 10; background-color:gray;"></div>
+ 
+<!--活动详情咨询及联系信息-->   
+<div id="remarks">
+	<div>
+		<font style="margin: 20 0 15 0; font-size: 32; font-weight: bold;color: #RRGGBB">报名截止</font>
+    	<font style="color: red;">*</font>
+    	<object type="date" id="remarks_End_Date" name="" value="" style="background-color:transparent; align: right;"></object>
+		<object type="time" id="remarks_End_Time" name="" value="" style="background-color:transparent; align: right;"></object>
+	</div>
+	<hr style=""></hr>
+	<div>
+		<font style="margin: 20 0 15 0; font-size: 32; font-weight: bold;color: #RRGGBB">活动咨询</font>
+    	<font style="color: red;">*</font>
+    	<input type="text" rows="2" style="height:60; margin: 5 0 5 0; border-radius:none; border-size: 0;" class="label_right2" id="remarks_phone_no" prompt="请输入联系人手机号码"></input>
+	</div>
+	<hr style=""></hr>
+	<div>
+		<font style="margin: 20 0 15 0; font-size: 32; font-weight: bold;color: #RRGGBB">人数限制</font>
+    	<font style="color: red;"></font>
+    	<input type="text" rows="2" style="height:60; margin: 5 0 5 0; border-radius:none; border-size: 0;" class="label_right2" id="remarks_limits" prompt="不填视为无限制"></input>
+	</div>
+	<hr style=""></hr>
+	<div id="remarks_participator">
+		<font style="margin: 20 0 15 0; font-size: 32; font-weight: bold;color: #RRGGBB">用户报名必填项</font>
+    	<font style="color: red;"></font>
+    	<div style="text-align: center;">
+    		<input id="phoneId" class="remarks_participator_style"  type="radio"/><font class="remarks_participator_style" style="">手机号</font>  		
+    		<input id="personId" class="remarks_participator_style"  type="radio"/><font style="" class="remarks_participator_style">身份证</font>
+    		<input id="sexSelected" class="remarks_participator_style" type="radio"/><font style="" class="remarks_participator_style">性别</font>
+    		<input id="rmks" class="remarks_participator_style"  type="radio"/><font style="" class="remarks_participator_style">备注</font>
+    	</div>
+	</div>
+</div>    
+
+</body>
+</html>

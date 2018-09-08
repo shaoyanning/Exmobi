@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;exmobi_lite&apos; to &apos;default&apos;&#x0D;&#x0A;－ 原始项目：“hellodbserver”&#x0D;&#x0A;－ 目标元素：“default”&#x0D;&#x0A;－ 原始元素：“exmobi_lite”" description="复制文件夹" element1="client/script/phone/default/exmobi_lite" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1531213836765" target="/activity/client/script/phone/default" units="0" version="1.0"/>
+</session>

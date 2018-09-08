@@ -1,0 +1,42 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script type="text/javascript" src=""></script>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		
+		<script>
+		<![CDATA[
+			var load=function(){
+				document.getElementById("photouploadId").openCameraUploadEx(true);;
+			}
+			var postback=function(){
+				$("#show").show();
+				alert("dddd");
+				$("#hide").hide();
+			}
+			
+			var show=function(){$('#hide').show();alert("show");}
+			var hide=function(){$('#hide').hide();alert("hide");}
+		]]>
+		</script>
+	</head>
+	<body>
+		<input type="button" value="show" onclick="show()"></input>
+		<input type="button" value="hide" onclick="hide()"></input>
+		<div>
+					<div id="hide">
+			pppp
+			<input type="button" onclick="load()" value="test"></input>
+		</div>
+		<div id="show">
+			<photoupload id="photouploadId" name="" style="" pwidth="" onscroll="" onback="postback();"></photoupload>
+		</div>
+			
+		</div>
+
+		
+			
+	</body>
+</html>

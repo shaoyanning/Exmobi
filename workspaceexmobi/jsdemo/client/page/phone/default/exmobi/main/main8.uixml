@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html isbridge="true" style="openanimation: fade">
+	<head>
+		<title show="false"/>
+		<link rel="stylesheet" type="text/css" href="res:css/global.css" />
+		<style type="text/css">
+		body{
+			padding:0 12;
+			background-color:white;
+		}
+		menubar{
+			menu-background-current-image:url(res:image/main8/menubar_current.png);menu-click-color:white;menu-current-color:white;overlay:none
+		}
+		.cellList{
+			width:33%;height:50%;text-align:center;text-valign:middle;font-size:20dp;color:#666666;
+		}
+		.iconarea{
+			border-radius:6;width:58;height:58;text-align:center;text-valign:middle;
+		}
+		.icon{
+			width:44;
+		}
+		</style>
+		
+		<script type="text/javascript" src="res:page/locate.js"></script>
+		
+		<script type="text/javascript">
+			<![CDATA[
+			    var city="上海";
+				var locate1=null;
+			function start() {
+				locate1 = new $locate();
+				//开始定位
+				//参数：coortype，字符串枚举值：gcj02，返回国测局经纬度坐标系；bd09，返回百度摩卡托坐标系；bd09ll，返回百度经纬度坐标系、
+				//参数callback 是自定义回调函数，只能在回调函数里面获取定位信息
+				locate1.startLocate("gcj02", "getLocation");
+			}
+
+			//获取定位城市
+			function getLocation() {
+				if (locate1.jsondata && locate1.jsondata.city) {
+					//定位成功
+					//getWeather('cityName', (locate1.jsondata.city).replace("市", ""));
+					alert(locate1.jsondata.address);
+					var titleObj=document.getElementById("title");
+					titleObj.title=locate1.jsondata.address;
+				} else {
+					//定位失败
+					//getWeather('cityName', "上海");
+					alert("定位失败！");
+				}
+			}
+				function init(){
+					
+					var titleObj=document.getElementById("title");
+					//var username=window.getParameter("username");
+					var username=window.getStringSession("username");
+					var password=window.getStringSession("password");
+					var userinfo=ClientUtil.stringToJson(EncryptionUtil.base64Decode(window.getStringSession("userinfoe")));
+					console.log("main8--"+window.getStringSession("userinfoe"));
+					console.log("main8-decode"+EncryptionUtil.base64Decode(window.getStringSession("userinfoe")));
+					//titleObj.title=username;
+					var userinfoc=ClientUtil.stringToJson(EncryptionUtil.base64Decode(document.cache.getCache("jsdemo_userinfoe")));
+					console.log(userinfo);
+					//titleObj.title=userinfo.uid;
+					//titleObj.title=userinfoc.uid;
+					var loginWin=PageUtil.getWindowById("login");
+					var uid=loginWin.document.getElementById("uid").value;
+					titleObj.title="你好"+uid;
+					start();
+				}
+			]]>
+		</script>
+		
+		
+	</head>
+	<header>
+		<titlebar title="主页" id="title" iconhref="script:close" hidericon="true" rcaption="查询" />
+		<slidingcontainer>
+			<slidingitem><img src="res:image/main8/slide.jpg" class="width-full"/></slidingitem>
+			<slidingitem><img src="res:image/main8/slide.jpg" class="width-full"/></slidingitem>
+			<slidingitem><img src="res:image/main8/slide.jpg" class="width-full"/></slidingitem>
+		</slidingcontainer>
+	</header>
+	<body onload="init() ">
+		<div class="cellList">
+			<div class="iconarea" style="background-color:#53c6fd;background-click-color:#23aaea;"><img src="res:image/main8/sound.png" class="icon"/></div>
+			<br size="4"/>
+			<font>通知公告</font>
+		</div>
+		<div class="cellList">
+			<div class="iconarea" style="background-color:#ffae02;background-click-color:#e89e01;"><img src="res:image/main8/chat.png" class="icon"/></div>
+			<br size="4"/>
+			<font>消息提醒</font>
+		</div>
+		<div class="cellList">
+			<div class="iconarea" style="background-color:#3ae3ea;background-click-color:#1fd2d9;"><img src="res:image/main8/folder.png" class="icon"/></div>
+			<br size="4"/>
+			<font>公文管理</font>
+		</div>
+		<div class="cellList">
+			<div class="iconarea" style="background-color:#ff6f36;background-click-color:#ea4f11;"><img src="res:image/main8/addr.png" class="icon"/></div>
+			<br size="4"/>
+			<font>通讯录</font>
+		</div>
+		<div class="cellList">
+			<div class="iconarea" style="background-color:#cf7af3;background-click-color:#b34adf;"><img src="res:image/main8/calendar.png" class="icon"/></div>
+			<br size="4"/>
+			<font>个人日程</font>
+		</div>
+		<div class="cellList">
+			<div class="iconarea" style="background-color:#4cd32e;background-click-color:#2fb910;"><img src="res:image/main8/mail.png" class="icon"/></div>
+			<br size="4"/>
+			<font>邮件</font>
+		</div>
+	</body>
+	<footer>
+		<menubar optiontype="mix" showtype="mix">
+			<menu icon="res:image/main8/home.png" currenticon="res:image/main8/home_current.png" text="首页" selected="true"/>
+			<menu icon="res:image/main8/product.png" currenticon="res:image/main8/product_current.png" text="产品"/>
+			<menu icon="res:image/main8/write.png" currenticon="res:image/main8/write_current.png" text="考核"/>
+			<menu icon="res:image/main8/more.png" currenticon="res:image/main8/more_current.png" text="更多"/>
+		</menubar>
+	</footer>
+</html>

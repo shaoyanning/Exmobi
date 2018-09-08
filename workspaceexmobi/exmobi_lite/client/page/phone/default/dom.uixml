@@ -1,0 +1,228 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Dom操作</title>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript" src="res:script/exmobi_lite/template-native-exmobi.js"></script>
+		<script>
+			alert($('#aa.bb').html());
+		</script>
+	</head>
+	<header>
+		<tabbar tabtype="trapezia" col="2" showtype="text">
+			<tab text="示例" bindpage="example"></tab>
+			<tab text="说明" bindpage="info"></tab>
+		</tabbar>
+	</header>
+	<body>
+		<page id="example">
+			<font style="color: #c0392b;">[]数组索引</font>
+			<div id="aa.bb" style="margin:4 0;">
+				var nativeDom = $(selector)[index];//根据索引获取某个dom的原生JS对象
+			</div>
+			
+			<font style="color: #c0392b;">html函数</font>
+			<div style="margin:4 0;">
+				var html = $(selector).html();//获取dom内部innerHTML
+			</div>
+			<div style="margin:4 0;">
+				$(selector).html('new html');//设置dom内部innerHTML
+			</div>
+			
+			<font style="color: #c0392b;">val函数</font>
+			<div style="margin:4 0;">
+				var val = $(selector).val();//获取dom的value值
+			</div>
+			<div style="margin:4 0;">
+				$(selector).val('new value');//设置dom的value值
+			</div>
+			
+			<font style="color: #c0392b;">attr函数</font>
+			<div style="margin:4 0;">
+				var attr = $(selector).attr('attrName');//获取dom的某个属性值
+			</div>
+			<div style="margin:4 0;">
+				$(selector).attr('attrName', 'attrVal');//设置dom的某个属性值
+			</div>
+			<br />
+			
+			<font style="color: #c0392b;">css函数</font>
+			<div style="margin:4 0;">
+				$(selector).css('styleName', 'styleVal');//设置dom的某个样式
+			</div>
+			<div style="margin:4 0;">
+				$(selector).css({'styleName' : 'styleVal'});//设置dom的多个样式
+			</div>
+			<div style="margin:4 0;">
+				支持的样式设置请参考手册
+			</div>
+			
+			<font style="color: #c0392b;">hasClass函数</font>
+			<div style="margin:4 0;">
+				$(selector).hasClass('className');//返回dom是否包含某个样式
+			</div>
+			
+			<font style="color: #c0392b;">addClass函数</font>
+			<div style="margin:4 0;">
+				$(selector).addClass('className', ['className']);//设置dom的某个样式
+			</div>
+			
+			<font style="color: #c0392b;">removeClass函数</font>
+			<div style="margin:4 0;">
+				$(selector).removeClass('className');//移除dom的某个样式
+			</div>
+			
+			<font style="color: #c0392b;">loadUrl函数</font>
+			<div style="margin:4 0;">
+				$(selector).loadUrl('path');//为webview设置url
+			</div>
+
+			
+			<font style="color: #c0392b;">append函数</font>
+			<div style="margin:4 0;">
+				$(selector).append('new str' [, 'new str'...]);//为dom追加innerHTML
+			</div>
+			
+			<font style="color: #c0392b;">get函数</font>
+			<div style="margin:4 0;">
+				$(selector).get(index);//根据索引获取某个dom的$对象
+			</div>
+			
+			<font style="color: #c0392b;">get函数</font>
+			<div style="margin:4 0;">
+				$(selector).get(index);//根据索引获取某个dom的$对象
+			</div>
+			
+			<font style="color: #c0392b;">check函数</font>
+			<div style="margin:4 0;">
+				$(selector).check();//设置dom为选中状态
+			</div>
+			
+			<font style="color: #c0392b;">uncheck函数</font>
+			<div style="margin:4 0;">
+				$(selector).check();//设置dom为未选中状态
+			</div>
+			
+			<font style="color: #c0392b;">checked函数</font>
+			<div style="margin:4 0;">
+				var isChecked = $(selector).checked();//获取dom的选中状态
+			</div>
+			
+			<font style="color: #c0392b;">each函数</font>
+			<div style="margin:4 0;">
+				$(selector).each(function(i){
+			</div>
+			<div style="margin:4 0;">
+				//this对象为dom的原生JS对象，通过$(this)转成$对象
+			</div>
+			<div style="margin:4 0;">
+				var dom = $(this);
+			</div>
+			<div style="margin:4 0;">
+				});//循环选择器中的所有dom对象
+			</div>
+			
+			<font style="color: #c0392b;">序列化相关函数</font>
+			<div style="margin:4 0;">
+				//序列化form内的表单元素为键值对字符串，多个相同name会出现多次
+			</div>
+			<div style="margin:4 0;">
+				var params = $(selector).serialize();
+			</div>
+			<div style="margin:4 0;">
+				//序列化form内的表单元素为JSON对象，多个相同name的值为数组
+			</div>
+			<div style="margin:4 0;">
+				var paramsJSON = $(selector).serializeJSON();
+			</div>
+			<div style="margin:4 0;">
+				//序列化form内的表单元素为数组，多个相同name会出现多次
+			</div>
+			<div style="margin:4 0;">
+				var params = $(selector).serializeArray();
+			</div>
+			<div style="margin:4 0;">
+				注：所有序列化不包含文件类型
+			</div>
+			
+			<font style="color: #c0392b;">显隐函数</font>
+			<div style="margin:4 0;">
+				$(selector).show();//dom元素显示
+			</div>
+			<div style="margin:4 0;">
+				$(selector).hide();//dom元素隐藏
+			</div>
+			
+			<font style="color: #c0392b;">数据注入函数</font>
+			<div style="margin:4 0;">
+				$(selector).renderReplace(str, data, callback);//注入后的数据替换原来dom内的内容
+			</div>
+			<div style="margin:4 0;">
+				$(selector).renderAfter(str, data, callback);//注入后的数据在dom内尾部插入
+			</div>
+			<div style="margin:4 0;">
+				$(selector).renderBefore(str, data, callback);//注入后的数据在dom内顶部插入
+			</div>
+			<div style="margin:4 0;">
+				注：
+			</div>
+			<div style="margin:4 0;">	
+				str可以为模板的字符串、http地址（走Ajax服务端异步请求）、res地址
+			</div>
+			<div style="margin:4 0;">
+				data可以为json对象、http地址（走Ajax服务端异步请求）、res地址
+			</div>
+			
+			<font style="color: #c0392b;">事件函数</font>
+			<div style="margin:4 0;">
+				$(selector).click();//执行dom的点击事件，包括href和onclick
+			</div>
+			<div style="margin:4 0;">
+				$(selector).on('eventName', function);//为dom绑定事件
+			</div>
+			<div style="margin:4 0;">
+				$(selector).trigger('eventName');//触发dom绑定的事件
+			</div>
+			<div style="margin:4 0;">
+				注：on和trigger与ExMobi本身的事件无关，并未打通。比如没有on一个click事件，点击a的时候是不会trigger其click
+			</div>
+		</page>
+		<page id="info">
+			<font style="color: #c0392b;">基本用法</font>
+			<div style="margin:4 0;">
+				$(selector).html('new').click();
+			</div>
+			<font style="color: #c0392b;">selector的类型</font>
+			<div style="margin:4 0;">
+				支持id选择器（#id）、元素选择器（tag）、类选择器（.className）和属性选择器([attr='value'])
+			</div>
+			<div style="margin:4 0;">
+				必须至少包含tag、#id或者属性[name='']中之一，否则无法取到对象
+			</div>
+			<div style="margin:4 0;">
+				支持多属性，多个选择器用英文“,”隔开
+			</div>
+			<div style="margin:4 0;">
+				不支持通配符*，不支持派生，不支持多样式
+			</div>
+			<font style="color: #c0392b;">正确示例</font>
+			<div style="margin:4 0;">
+				$('div, #test, [name="ipt"][type="file"]')
+			</div>
+			<div style="margin:4 0;">
+				$('div.tab, input#test, #test[name='ipt']')
+			</div>
+			<font style="color: #c0392b;">错误示例</font>
+			<div style="margin:4 0;">
+				 $('*')【不支持通配符】
+			</div>
+			<div style="margin:4 0;">
+				 $('.tab')【未包含tag、#id或[name='']之一】
+			</div>
+			<div style="margin:4 0;">
+				 $('div #test')【不支持级联】  $('div.tab.menu')【不支持多样式】
+			</div>
+		</page>
+	</body>
+</html>

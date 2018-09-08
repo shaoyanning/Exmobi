@@ -1,0 +1,84 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Ajax异步请求</title>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript" src="res:script/exmobi_lite/template-native-exmobi.js"></script>
+		<script>
+		<![CDATA[
+			function doAjax(){
+				$.server({
+					url : 'http://domain/server.jsp',
+					dataType : 'json',
+					success : function(data){
+						alert(data.list);
+					}
+				});
+			}
+		]]>
+		</script>
+	</head>
+	<body>
+		<div style="border-radius: 8;border-size:1;padding:10;margin:4 0;">
+			ExMobi Lite封装了ExMobi的大部分异步请求。
+		</div>
+		<div style="text-align: center;">
+			<input id="btn" type="button" value="点击测试" onclick="doAjax()"></input>
+		</div>
+		
+		<font style="color: #c0392b;">经过ExMobi服务端</font>
+		<div style="margin:4 0;">
+			$.server(options);//对应ExMobi的Ajax类
+		</div>
+		<div style="margin:4 0;">
+			$.serverForm(options);//对应ExMobi的FormSubmit类
+		</div>
+		
+		<font style="color: #c0392b;">直连第三方系统</font>
+		<div style="margin:4 0;">
+			$.ajax(options);//对应ExMobi的DirectAjax类
+		</div>
+		<div style="margin:4 0;">
+			$.form(options);//对应ExMobi的DirectFormSubmit类
+		</div>
+		
+		<font style="color: #c0392b;">特别说明</font>
+		<div style="margin:4 0;">
+			server和ajax两个函数不可上传文件，所以options一般包含：
+		</div>
+		<div style="margin:4 0;">
+			url：http请求地址
+		</div>
+		<div style="margin:4 0;">
+			type：请求方式，get（默认）|post
+		</div>
+		<div style="margin:4 0;">
+			data：请求的参数，为字符串
+		</div>
+		<div style="margin:4 0;">
+			headers：请求的头信息，为json对象
+		</div>
+		<div style="margin:4 0;">
+			dataType：相应数据格式化，text（默认）|json
+		</div>
+		<div style="margin:4 0;">
+			timeout：超时时间，20000（默认），单位毫秒
+		</div>
+		<div style="margin:4 0;">
+			success：成功回调函数
+		</div>
+		<div style="margin:4 0;">
+			error：失败回调函数
+		</div>
+		<div style="margin:4 0;">
+			isBlock：是否显示进度条，true|false（默认）
+		</div>
+		<div style="margin:4 0;">
+			form和serverForm两个函数可上传文件，所以options除了以上信息，还需要添加：
+		</div>
+		<div style="margin:4 0;">
+			fileElementId：要上传文件的控件id，单个文件为字符串，多个文件为数组
+		</div>
+	</body>
+</html>

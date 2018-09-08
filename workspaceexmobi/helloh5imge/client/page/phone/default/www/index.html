@@ -1,0 +1,75 @@
+<!-- HTML5文件 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>新闻详情</title>
+		<style>
+			
+		</style>
+		<script src="jquery-2.1.3.min.js"></script>
+		<script>
+			(function(w){
+				$(document).on('plusready',function(){
+					w.doShowDetail =function(data){
+						var obj=eval('('+data.responseText+')');
+						var title=obj.title;
+						var content=obj.content;
+						$('body').html(title+content);
+						doLoadImg();
+					};
+				});
+				w.doFail=function(){
+					
+				};
+				var postData={
+					"source":"http://news.sina.com.cn/c/xl/2018-07-08/doc-ihezpzwt6108223.shtml"
+				};
+				var ajax=new Ajax({
+					url:'http://demo/news.jsp',
+					method:'post',
+					data:ClientUtil.jsonToString(postData),
+					requestHeader:{'Content-Type':'application/json'},
+					successFunction:'doShowDetail',
+					failFunction:'doFail'
+				});
+				ajax.send();
+			});
+			
+			var doLoadImg=function(ajax){
+				var _cache={
+					"index":0
+				};
+				w.setSource=function(ajax){
+					var index = ajax.getStringData('index');
+					var $obj= cache[index];
+					$obj.attr('src',ajax.responseText);
+					delete _cache[index];
+				};
+				
+				$('img').each(function{
+					var source = $(this).data('source');
+					var postData = {
+						"source":source
+					};
+					var ajax =new Ajax({
+						url:'http://demo/getImgBase64.jsp',
+						method:'post',
+						data:ClientUtil.jsonToString(postData),
+						requestHeader:{'Context-Type':'application/json'},
+						successFunction:'setSource',
+						failFunction:'doFail'
+					});
+					
+					var index = _cache.index++;
+					_cache[index] = $(this);
+					ajax.setStringData('index',index);
+					ajax.send();
+				});
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

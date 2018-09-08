@@ -1,0 +1,66 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			
+		]]>
+		</script>
+	</head>
+	<header style="" class="" id="" >
+		<tabbar tabtype="rect" col="3" showtype="text">
+			<tab icon="" text="1" bindpage="pageid" ></tab>
+			<tab icon="" text="2" bindpage="pageid2" selected="true"></tab>
+			<tab icon="" text="3" bindpage="pageid3" selected="false" isshowtip="true"></tab>
+		</tabbar>
+		
+	</header>
+	
+	<body style="background-color: green;">
+		<font style="color:red">right</font>
+		 <page id="pageid">
+
+        <form action="http://127.0.0.1:8001/jsp/input_submit_example.jsp">
+
+            <div style="width:80%;border-size:1;background-color:silver;border-radius:4;align:center;margin:100 0 0 0">
+
+                <input type="text" prompt="用户名" hideborder="true"/>
+
+                <input type="password" prompt="密码" hideborder="true"/>
+
+            </div>
+
+            <input type="submit" value="登      录" style="width:80%;align:center;"/>
+
+        </form>
+
+    </page>
+
+    <page id="pageid2" style="background-image:url(res:image/bg.png)" show="true">
+
+        <form action="http://127.0.0.1:8001/jsp/input_submit_example.jsp">
+
+            <div style="width:80%;border-size:1;background-color:silver;border-radius:4;align:center;margin:100 0 0 0">
+
+                <input type="text" prompt="邮箱地址" hideborder="true"/>
+
+                <input type="text" prompt="昵称" hideborder="true"/>
+
+                <input type="password" prompt="密码" hideborder="true"/>
+
+            </div>
+
+            <input type="submit" value="注册" style="width:80%;align:center;"/>
+
+        </form>
+
+    </page>
+	<page id="pageid3" url="res:page/pagedemo/page3.uixml">
+		
+	</page>
+	
+
+	</body>
+</html>

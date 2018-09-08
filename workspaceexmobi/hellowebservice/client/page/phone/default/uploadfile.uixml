@@ -1,0 +1,50 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			
+		]]>
+		</script>
+		<style type="text/css">
+			.lfont{
+				width:30%;
+			}
+			.rlabel{
+				width:70%;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<font class="lfont">标题</font>
+		<input class="rlabel" type="text" value="" name=""></input>
+		<hr/>
+		<font class="lfont">日期</font>
+		<object type="date" id=""  class="rlabel" name="" value=""></object>
+		<hr/>
+		<font class="lfont">类型</font>
+		<select id="">
+			<option value="">
+				工作日志	
+			</option>
+			<option value="">
+				个人日志
+			</option>
+		</select>
+		<hr/>
+		<textarea rows="5" style=""></textarea>
+		<hr/>
+		<font class="lfont">附件</font>
+		<input type="file"></input>
+		<hr/>
+		
+		
+		
+		
+
+		
+	</body>
+</html>

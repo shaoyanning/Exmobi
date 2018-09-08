@@ -1,0 +1,3 @@
+<% for (i = 0; i < list.length; i ++) { %>
+<listitem type="twoline" name="list" caption="条目内容 <%= i + 1 %> ：<%= list[i] %>" sndcaption="item已经绑定href事件，点击试试" />
+<% } %>

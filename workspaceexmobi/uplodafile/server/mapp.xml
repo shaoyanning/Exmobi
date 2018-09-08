@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<maxml version="2.0" xmlns="http://www.nj.fiberhome.com.cn/map"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.nj.fiberhome.com.cn/map maxml-2.0.xsd">
+  <config>
+    <htmlformat wellformat="true" />
+    <filepreviewconfig wordtohtml="true"/>
+  </config>
+  <route baseaddr="http://hrssgz.gov.cn">
+  	<forward pattern="/" path="getfile.jsp"/>
+  </route>
+  <services>
+  	<http-service>
+  	<!--http://${ip}:${port}/process/service/${appid}/${pattern}-->
+  		<forward pattern="/queryuser" path="queryuser.jsp"></forward>
+  	</http-service>
+  </services>
+</maxml>

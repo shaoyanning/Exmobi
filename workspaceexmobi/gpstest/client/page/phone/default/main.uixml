@@ -1,0 +1,105 @@
+<html class="zt" id="main">
+	<head>
+		<meta content="charset=utf-8"/>
+		<title show="false">Hello World</title>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript" src="res:script/exmobi_lite/template-native.js"></script>
+		<script type="text/javascript" src="res:script/exmobi_lite/app.js"></script>
+		<script type="text/javascript" src="res:script/locate.js"></script>
+		<link rel="stylesheet" type="" href="res:css/main.css" />
+		<script>
+			<![CDATA[
+			var city = "上海";
+			var locate1 = null;
+			//开始定位
+			function start() {
+				locate1 = new $locate();
+				//开始定位
+				//参数：coortype，字符串枚举值：gcj02，返回国测局经纬度坐标系；bd09，返回百度摩卡托坐标系；bd09ll，返回百度经纬度坐标系、
+				//参数callback 是自定义回调函数，只能在回调函数里面获取定位信息
+				locate1.startLocate("gcj02", "getLocation");
+			}
+
+			//获取定位城市
+			function getLocation() {
+				if (locate1.jsondata && locate1.jsondata.city) {
+					//定位成功
+					getWeather('cityName', (locate1.jsondata.city).replace("市", ""));
+				} else {
+					//定位失败
+					getWeather('cityName', "上海");
+				}
+			}
+
+			//获取天气
+			function getWeather(type, param1, param2) {
+				$.ajax({
+					url : $exmobiServerUrl() + "/getWeather",
+					type : "post",
+					data : "type=" + type + "&param1=" + param1 + "&param2=" + param2,
+					dataType : "json",
+					success : function(data) {
+						if (data && data.type == "success") {
+							city = data.city;
+							$("#weatherNum").html(data.wendu + "°");
+							$("#weatherDet").html(data.city + data.wtype + "<br />" + data.fengxiang + data.fengli);
+							if ((data.wtype).indexOf("雨") != -1) {
+								$("#weatherImg").attr("src", "res:image/Rain.png");
+							} else if ((data.wtype).indexOf("晴") != -1) {
+								$("#weatherImg").attr("src", "res:image/Sun.png");
+							} else if ((data.wtype).indexOf("多云") != -1 || (data.wtype).indexOf("阴") != -1) {
+								$("#weatherImg").attr("src", "res:image/Cloud.png");
+							} else if ((data.wtype).indexOf("风") != -1) {
+								$("#weatherImg").attr("src", "res:image/Sun_Cloud icon.png");
+							}
+						}
+					}
+				});
+
+			}
+
+			]]>
+		</script>
+	</head>
+	<header class="bg2" >
+		<div style="height:50dp;text-valign:middle">
+			<ediv id="user" class="c3" href="script:close" style="padding:10">
+				欢迎您，学习者！
+			</ediv>
+			<div style="width:50%;margin:0 10 0 0" class="ar tr" href="getCity()">
+				<ediv class="c3 xl" id="weatherNum">
+					18°
+				</ediv>
+				<ediv class="s c3" id="weatherDet">
+					上海晴转多云
+					<br/>
+					空气度 57
+				</ediv>
+				<img id="weatherImg" style="width:18%" src="res:image/tq.png" href=""></img>
+			</div>
+		</div>
+	</header>
+
+	<body style="padding: 0" class="bg3" onload="start()">
+		<dragrefresh id="dragrefreshObj4" dragicon="res:image/loading.gif" releaseicon="res:image/loading.gif" refreshicon="res:image/loading.gif"  timeout="1000" type="top"></dragrefresh>
+		<scrollpicture defaultsrc="res:image/banner.png" id="scrollpic" style="width:100%;height:30%;" interval="true" intervaltime="8">
+			<item src="res:image/banner.png" description="专业化 标准化 规范化 信息化 国际化"></item>
+			<item src="res:image/banner01.png" description="有理想 有道德 有文化 有纪律"></item>
+			<item src="res:image/banner02.png" description="以人为本 诚信服务 和谐共赢 求真务实 创新卓越"></item>
+			<item src="res:image/banner04.png" description="以人为本 诚信服务 和谐共赢 求真务实 创新卓越"></item>
+		</scrollpicture>
+		<div id="menus"></div>
+		<grid class="grid" id="gridOne" col="3" showtype="mix">
+			<cell id="localmail" icon="res:image/xxgg.png" text="XXXX" href="res:page/mail/mail.uixml" isshowtip="true" tiptext="2" />
+			<cell icon="res:image/wzsb.png" text="XXXX" href="" />
+			<cell icon="res:image/rcjc.png" text="XXXX" href="" />
+			<cell icon="res:image/zxjc.png" text="XXXX" href="" />
+			<cell icon="res:image/ryjx.png" text="XXXX" href=""  />
+			<cell icon="res:image/sjtj.png" text="XXXX" tiptext=""  />
+		</grid>
+		<br size="5"/>
+		<hr color="#eeeeee"/>
+		<dragrefresh onscroll="" type="bottom" dragcaption="拖动刷新" releasecaption="释放刷新" refreshcaption="请稍等..." dragicon="" releaseicon="" onscroll="" refreshicon=""></dragrefresh>
+		<input type="hidden" value="" id="city"></input>
+	</body>
+</html>

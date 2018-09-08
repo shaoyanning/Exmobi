@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html>
+	<head>
+		<title show="false"/>
+		<style type="text/css">
+		input[type=text]{
+			background-color:transparent;
+			border-size:0;
+			border-radius:4;
+			margin:3 0;
+			height:50;
+			padding:0 4;
+			color:#525252;
+		}
+		input[type=password]{
+			background-color:transparent;
+			border-size:0;
+			border-radius:4;
+			margin:3 0;
+			height:50;
+			padding:0 4;
+			color:#525252;
+		}
+		font{
+			color:#8f8f8f;
+		}
+		switch{ 	
+			overlay:none;
+			border-radius: 16;
+			align:right;
+		}
+		input[type="button"]{
+			width:100%;
+			margin:4 0 4 0;
+			height:45;
+			font-size:20dp;
+			border-radius:4;
+		}
+		.card{
+			border-radius:4;border-size: 1;border-color: #d9d9d9;background-color: white;
+		}
+		</style>
+		<script type="text/javascript" src="res:script/exmobi_lite/core.js"></script>
+		<script type="text/javascript">
+			<![CDATA[
+		var rem=function(){
+			   var switchObj = document.getElementById("switch");
+             	var n=	document.getElementById("username").value;
+		     	var p=	document.getElementById("password").value;
+     if(!switchObj.checked){
+       	      if(switchObj.value=="否"){
+     	      	    n=document.cache.getCache("username");
+					p=document.cache.getCache("password");
+					switchObj.value = "是";
+     	      }else{
+     	      	   n="";
+     	      	   p="";
+     	      	   switchObj.value = "否";
+     	      }					
+    }else{
+  
+        switchObj.value = "否";
+        switchObj.checked=false;
+
+    } 
+
+
+		    
+		    
+
+		}	
+			
+		var suc=function(data){
+				console.log(data.responseText+"LINE--------->>>>>>>>><<<<<<<");
+				var rsp = ClientUtil.stringToJson(data.responseText);
+				if(rsp.result == "success"){
+					
+					var userInfo=EncryptionUtil.base64Encode(ClientUtil.jsonToString(rsp.userinfo));
+					
+					window.setStringSession("userInfoStr",userInfo)
+					
+					if(document.getElementById(switch).checked==true){
+					   document.cache.setCache("username",userInfo.username);
+					   document.cache.setCache("password",userInfo.password);
+					   document.cache.setCache("remTag","rembered");
+					   
+					   document.getElementById("username").value=userInfo.username;
+		     		   document.getElementById("password").value=userInfo.password;
+					}
+
+					 
+
+					 
+					 
+					window.open("res:page/exmobi/main/main.uixml");
+				}else{
+					$.showToast(rsp.msg);
+					window.open("res:page/exmobi/error/error.uixml");
+				}
+				}
+		var fail=function(data){
+			     $.showToast("请求失败，请检查网络-LINE-61-LOGIN.UIXML")
+		        }
+			]]>
+		</script>
+		
+		
+	</head>
+	<body style="background-color:#f4f4f4;padding:0 10;" onload="">
+		<form id="form" method="post" action="http://test/login.jsp" success="suc()" fail="fail()">
+			<br size="40"/>
+			<img src="res:image/login3/logo.png" style="width:40%;align:center;"/>
+			<br size="40"/>
+			<div class="card">
+				<input type="text" id="username" name="username" prompt="请输入用户名" licon="res:image/login3/user.png"/>
+				<hr/>
+				<input type="password" id="password" name="password" prompt="请输入密码" licon="res:image/login3/pwd.png"/>
+			</div>
+			<br size="5"/>
+			<font>记住密码</font>
+			<switch id="switch" ontext="" offtext="" value="否"  checked="false" onclick="rem()"></switch>
+			<br size="5"/>
+			<input type="submit" style="width: 80%;align: center;" value="登录"/>
+		</form>
+	</body>
+</html>
