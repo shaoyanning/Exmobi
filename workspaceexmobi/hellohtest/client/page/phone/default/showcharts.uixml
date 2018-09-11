@@ -1,0 +1,18 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+		<script>
+		<![CDATA[
+			
+		]]>
+		</script>
+	</head>
+	<header>
+		<titlebar title="展示" ricon="res:image/titlebar/ok.png" clickricon="res:image/titlebar/ok_click.png" iconhref="script:close" riconhref="dosub();"/>
+	</header>
+	<body>
+			<webview url="res:page/www/page/main.html" backmonitor="true"></webview>	
+	</body>
+</html>

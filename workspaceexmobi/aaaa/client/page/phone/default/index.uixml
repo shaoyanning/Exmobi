@@ -1,0 +1,10 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title>Hello World</title>
+	</head>
+	<body>
+		<webview url="res:page/showchart.html" backmonitor="true"></webview>
+	</body>
+</html>

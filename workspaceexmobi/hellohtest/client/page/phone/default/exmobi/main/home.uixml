@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html>
+	<head>
+		<title show="false"/>
+		<link rel="stylesheet" type="text/css" href="res:css/global.css" />
+		<style type="text/css">
+			.case{
+				width:147;height:151;font-size:18;color:white;text-align:center;text-valign:middle;
+			}
+			.icon{
+				width:40;
+			}			
+			.logoBg{
+				width:100;height:100;padding:10 10 10 10;background-color: #ffffff;background-radius:500;top:45%;
+			}
+			.logo{
+				width:80;height:80;
+			}
+		</style>
+	</head>
+	<header>
+		<titlebar title="主页" iconhref="script:close" hidericon="true"/>
+	</header>
+	<body style="text-align:center;text-valign:middle;background-image:url(res:image/main12/bg.jpg)">
+		<div style="background-image:url(res:image/main12/wn.png);background-click-image:url(res:image/main12/wn_click.png);padding:15 0 0 15;" class="case">
+			<img src="res:image/main12/sound.png" class="icon"/>
+			<br size="4"/>
+			<font>通知公告</font>
+		</div>
+		<div style="background-image:url(res:image/main12/en.png);background-click-image:url(res:image/main12/en_click.png);padding:15 15 0 0;" class="case">
+			<img src="res:image/main12/addr.png" class="icon"/>
+			<br/>
+			<font>通讯录</font>
+		</div>
+		<div style="background-image:url(res:image/main12/ws.png);background-click-image:url(res:image/main12/ws_click.png);padding:0 0 15 15;" class="case">
+			<img src="res:image/main12/folder.png" class="icon"/>
+			<br/>
+			<font>公文管理</font>
+		</div>
+		<div style="background-image:url(res:image/main12/es.png);background-click-image:url(res:image/main12/es_click.png);padding:0 15 15 0;" class="case">
+			<img src="res:image/main12/mail.png" class="icon"/>
+			<br/>
+			<font>邮件</font>
+		</div>
+		<div class="logoBg" style="display: none">
+			<img src="res:image/main12/logo.png" class="logo"/>
+		</div>
+	</body>
+	<fixset>
+		<fix class="logoBg"><img src="res:image/main12/logo.png" class="logo"/></fix>
+	</fixset>
+</html>

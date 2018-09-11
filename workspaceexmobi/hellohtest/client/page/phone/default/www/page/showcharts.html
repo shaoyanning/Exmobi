@@ -1,0 +1,119 @@
+<!-- HTML5文件 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Insert title here</title>
+		<script src="../plugin/jquery/jquery.min.js"></script>
+    	<script src="../plugin/seedsui/seedsui.min.js"></script>
+    	<!--Exmobi能力-->
+    	<script src="../plugin/exmobi/exmobi.js"></script>
+		<script src="../../echarts.min.js"></script>
+		<script>
+		//全局变量
+		var global_datax,global_datay,global_datas;
+		$().ready(function(){ 		}); //ready结尾
+			
+			document.addEventListener("plusready", function() {
+
+			//function demoAjax() {	}
+				var lgJson = {
+					url : 'http://192.168.8.103:8080/echarts/getLines2',
+					method : 'post',
+					data : "username=18316870778&password=pass1234",
+					successFunction : 'lgsuc',
+					failFunction : 'lgfail',
+					isBlock : true
+				}
+				var lgAjax = new Ajax(lgJson);
+				lgAjax.send();
+			},false);
+			
+			function lgsuc(data) {
+				var rspJson = ClientUtil.stringToJson(data.responseText);
+				if (rspJson.result == "success" || rspJson.result == "1") {
+					/*var userInfoStr = EncryptionUtil.base64Encode(ClientUtil.jsonToString(rspJson.userinfo));
+					Exmobi.setStringSession("userInfoStr", userInfoStr);
+					Exmobi.openWebview("res:page/www/page/main.html", true, {
+						uixmlId : "main"
+					});*/
+					alert(rspJson.names);
+					
+					global_datax=rspJson.names;
+					global_datay=rspJson.values;
+					console.log(global_datax+"~~~~~~~~~"+global_datay);
+				} else {
+					Exmobi.showToast(rspJson.msg);
+				}
+			}
+
+			function lgfail(data) {
+				Exmobi.showToast("请求失败，请检测网络");
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="button" onclick="show()">展示</input>
+		<div id="div_charts" style="width:100%;height:400px"></div>
+		<script>
+			function show(){
+			window.myChart = echarts.init(document.getElementById('div_charts'));
+				// 显示标题，图例和空的坐标轴
+	        var title="营销";
+	        var legend=['demo1','demo2']
+	        var xalis=global_datax;
+	        var yalis=global_datay;
+	        alert(xalis);
+	        var datax;
+	        
+	        var option = {
+			    title: {
+			        text: title
+			    },
+			    tooltip: {
+			        trigger: 'axis',
+			        axisPointer: {
+			            type: 'cross',
+			            crossStyle: {
+			                color: '#999'
+			            }
+			        }
+			    },
+			    toolbox: {
+			        feature: {
+			            dataView: {show: true, readOnly: false},
+			            magicType: {show: true, type: ['line', 'bar']},
+			            restore: {show: true},
+			            saveAsImage: {show: true}
+			        }
+			    },
+	            xAxis: {
+	                data: xalis
+	            },
+	            yAxis: {},
+	            series: [
+	            {
+	                name: legend[0],
+	                type: 'bar',
+	                data: yalis
+	            },
+	            {
+	                name: legend[1],
+	                type: 'bar',
+	                data: yalis
+	            },
+	            {
+	                name: legend[0],
+	                type: 'bar',
+	                data: yalis
+	            }
+	            ]
+	        };
+			
+			// 使用刚指定的配置项和数据显示图表。
+      		  myChart.setOption(option);
+			}
+		</script>
+	</body>
+</html>

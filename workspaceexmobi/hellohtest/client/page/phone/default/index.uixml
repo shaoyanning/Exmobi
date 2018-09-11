@@ -1,0 +1,16 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html isbridge="true">
+	<head>
+		<meta content="charset=utf-8"/>
+		<title show="false">Hello World</title>
+		<script>
+		<![CDATA[
+
+		]]>
+		</script>
+	</head>
+	<body>
+		<!--<webview url="http://wap.baidu.com/"></webview>-->
+		<webview url="res:page/www/page/login.html" backmonitor="true"></webview>	
+	</body>
+</html>

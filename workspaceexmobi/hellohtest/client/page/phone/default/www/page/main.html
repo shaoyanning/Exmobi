@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>main7</title>
+
+		<link rel="stylesheet" href="../plugin/seedsui/seedsui.min.css">
+		<link rel="stylesheet" href="../plugin/animate/animate.css">
+		<link rel="stylesheet" href="../css/main7.css"/>
+		   <script src="../plugin/jquery/jquery.min.js"></script>
+    <script src="../plugin/seedsui/seedsui.min.js"></script>
+    <!--Exmobi能力-->
+    <script src="../plugin/exmobi/exmobi.js"></script>
+		<script src="../../echarts.min.js"></script>
+		<script>
+		var global_datax,global_datay,global_datas;
+        document.addEventListener("backmonitor",function(){
+        	  Exmobi.close();
+        },false);
+    	document.addEventListener("plusready",function(){
+			$("#login-logo").click(function(){
+				Exmobi.close();
+			});
+			$().ready(function(){
+				//alert("--------------");
+				var lgJson={
+					url:'http://192.168.8.103:8080/echarts/getLines2',
+					method:'post',
+					successFunction:'lgsuc',
+					failFunction:'lgfail',
+					isBlock:true
+				}
+				var lgAjax=new Ajax(lgJson);
+				lgAjax.send();
+			});	
+		},false);
+		
+		//json2array
+		function json_array(data){		
+		     var len=eval(data).length;		
+		     var arr=[];		
+		     for(var i=0;i<len;i++){		
+			  arr[i] =[]; //js中二维数组必须进行重复的声明，否则会undefind		
+			  arr[i]['names']=data[i].names;		
+			  arr[i]['values']=data[i].values;		
+		     }		
+		     return arr;  		
+		}
+			//json_array(data);
+
+		
+		function lgsuc(data){
+			var rspJson=ClientUtil.stringToJson(data.responseText);
+			if(rspJson.result==1){
+							console.log("result=1//////////////////////");
+				var names=EncryptionUtil.base64Encode(ClientUtil.jsonToString(rspJson.datas));
+				Exmobi.setStringSession("names",rspJson);
+				
+				//Exmobi.openWebview("res:page/www/page/main.html",true,{uixmlId:"main"});
+				//ClientUtil.jsonToString
+				console.log("~~~~~~~~~~~~~~~~~~~~~~~~"+(rspJson.names));			
+				//json2jarray
+				global_datax=rspJson.names;
+				global_datay=rspJson.values;
+				console.log(global_datax+"~~~~~~~~~"+global_datay);
+				showCharts();
+			}else{
+				Exmobi.showToast(rspJson.msg);
+			}
+		}
+		
+		function lgfail(data){
+			Exmobi.showToast("请求失败，请检测网络")
+		}
+
+		function showCharts(){
+			 alert("// 基于准备好的dom，初始化echarts实例"+document.getElementById('div_charts'));
+        var myChart = echarts.init(document.getElementById('div_charts'));
+				//alert(myChart);
+        // 指定图表的配置项和数据
+        var title="营销";
+        var legend=['demo1','demo2']
+        var xalis=global_datax;
+        var yalis=global_datay;
+        alert(xalis);
+        var datax;
+        
+        var option = {
+            title: {
+                text: title
+            },
+            tooltip: {},
+            legend: {
+                data:legend
+            },
+            xAxis: {
+                data: xalis
+            },
+            yAxis: {},
+            series: [{
+                name: legend[0],
+                type: 'bar',
+                data: yalis
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+		}
+			;  
+			
+		</script>
+
+		<style>
+			#div_charts{
+			 	margin:0 auto;
+            	width: 60%;
+            	height:40%;
+            	/*background-color:red;*/
+			}
+		</style>
+	</head>
+    <body ontouchstart="" >
+
+		<div id="div_charts"></div>
+	   
+
+	<script src="../plugin/jquery/jquery.min.js"></script>
+    <script src="../plugin/seedsui/seedsui.min.js"></script>
+    <!--Exmobi能力-->
+    <script src="../plugin/exmobi/exmobi.js"></script>
+
+	<script>
+		function setGridHeight(){
+		    var gridContainerHeight = window.innerHeight - 44 - 100 - 60;
+		    $("#grid_container").css("min-height" , gridContainerHeight);
+		}
+		setGridHeight();
+		document.addEventListener("backmonitor",function(){
+			ExMobiWindow.close();
+		},false);
+		document.addEventListener("plusready",function(){
+			$("back-btn").click(function(){
+				ExMobiWindow.close();
+			});
+		},false);
+		//定义exmobi返回
+		function back(){history.go(-1);}
+	</script>
+</body>
+</html>
