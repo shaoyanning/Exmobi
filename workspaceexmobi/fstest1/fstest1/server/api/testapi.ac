@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<maxml-api xsi:schemaLocation="http://www.nj.fiberhome.com.cn/map ../../../maxml-api-2.0.xsd" xmlns="http://www.nj.fiberhome.com.cn/map" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <http-service id="testapi" isrest="true" name="测试模块">
+        <forward method="get" name="新闻列表" path="newslist.jsp" pattern="/newslist"/>
+        <forward method="get" name="电量使用数据" path="power.jsp" pattern="/power"/>
+    </http-service>
+</maxml-api>

@@ -1,0 +1,37 @@
+<!-- HTML5文件 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+		<title>饼图</title>
+		<link rel="stylesheet" type="" href="../css/piegraph.css" />
+		<script type="text/javascript" src="../script/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="../script/echarts.min.js"></script>
+		<script type="text/javascript" src="../script/piegraph.js"></script>
+		
+	</head>
+	<body>
+		<div class="top">各地用电数据展示</div>
+		<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+		<div id="bingtu" style="width: 100%;height:200px;"></div>
+		<div id="zhuxing" style="width: 100%;height:200px;"></div>
+		<div class="bottom">
+			<div class="btn">
+				<button class="zhu">柱状图</button>
+				<button class="bing">饼图</button>
+			</div>
+			<div class="title">电量使用情况</div>
+			<div>
+				<div class="change">
+					<span class="head">总用电量</span>
+					<span class="data">300</span>
+				</div>
+				<div class="change">
+					<span class="head">同比增长</span>
+					<span class="data">-30%</span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

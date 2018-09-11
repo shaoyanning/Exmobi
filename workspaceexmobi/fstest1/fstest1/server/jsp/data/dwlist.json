@@ -1,0 +1,31 @@
+	{"status":0,
+	"data":
+	{"newslist": [
+		{"title":"变压器内部检测机器人",
+		"description":"内部巡检机器人的成功研制，是提升电网智能化水平的重用举措，有效的解决了内部变压器的巡检风险高的问题",
+		"imageurl":"../image/nbjiancerobot.png"},
+		{"title":"电路检修",
+		"description":"为了保证人民的用电正常，一线的电路检修人员不辞辛劳的工作者",
+		"imageurl":"../image/dianlujianxiu.png"},
+		{"title":"机器巡视变电站",
+		"description":"变电站的巡视是一个必不可少而且要求较高的一项工作，通过机器人代替人工巡检，提升了巡检的效率和可靠性",
+		"imageurl":"../image/bdxunshirobot.png"}
+		,{"title":"全新电网服务体验",
+		"description":"为了提升客户的体验，南方电网通过线下线上结合的方式，不断的进行服务升级",
+		"imageurl":"../image/qxfuwutiyan.png"}
+		,{"title":"柔性直流背靠背工程",
+		"description":"鲁西背靠背直流工程建成后，云南侧将有四回500千伏交流线路接入至鲁西换流站，通过三回500KV出线接入南方电网主网，将有效化解交直流功率转移引起的电网安全问题",
+		"imageurl":"../image/rxzhiliubkb.png"}
+		,{"title":"无人机电力巡检",
+		"description":"在电力巡线的应用上，无人机操作控制过程简单可靠、运行稳定，而且巡检速度快",
+		"imageurl":"../image/wurenjixunjian.png"}
+	],
+	"headerlist": [
+		{"title":"变压器检测机器人",
+		"imageurl":"../image/nbjiancerobot.png"},
+		{"title":"机器变电站巡视",
+		"imageurl":"../image/bdxunshirobot.png"}
+		,{"title":"无人机电力巡检",
+		"imageurl":"../image/wurenjixunjian.png"}
+	]}
+	}

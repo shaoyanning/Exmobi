@@ -1,0 +1,15 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<title show="false"></title>	
+		<meta content="charset=utf-8"/>
+		<script>
+		<![CDATA[
+			
+		]]>
+		</script>
+	</head>
+	<body>
+		<webview url="res:page/home.html"></webview>		
+	</body>
+</html>
